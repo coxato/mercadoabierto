@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
+  "name": "mercadoabierto-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "An mercadolibre clone",
   "main": "index.js",
   "scripts": {
     "start": "next start",
@@ -11,7 +11,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/carlosEdua/mercadoabierto.git"
+  },
   "dependencies": {
     "firebase": "^8.1.1",
     "next": "^10.0.3",
