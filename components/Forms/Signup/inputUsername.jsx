@@ -17,13 +17,13 @@ const UsernameInputCheck = ({onChangeFinal}) => {
             setLoading(true);
             setValue(value);
     
-            const isAvaliable = await signupRequests.checkUsernameTaken(value);
+            const isAvaliable = await signupRequests.checkAvaliable('username', value);
             
             setLoading(false);
     
             if(isAvaliable){
                 setError(false);
-                onChangeFinal({ target: { username: value } });
+                onChangeFinal({ target: { value, name: 'username' } });
             }
             else{
                 setError('username taken');
@@ -36,16 +36,17 @@ const UsernameInputCheck = ({onChangeFinal}) => {
     }
 
     return (
-        <Form.Field>
-            <label>Username</label>
+        <Form.Group widths="equal">
             <Form.Input 
                 onChange={checkUsername} 
+                label="Username"
                 placeholder="username"
                 loading={loading}
                 defaultValue={_value}
                 error={loading ? false : error}
+                required
             />
-        </Form.Field>
+        </Form.Group>
     );
 }
  

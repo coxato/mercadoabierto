@@ -8,24 +8,24 @@ const BASE_URL = config.api.baseUrl;
 
 const signupRequests = {};
 
-signupRequests.checkUsernameTaken = function(username){
-    return new Promise((resolve) => {
+// check avaliable username or email on input change
+signupRequests.checkAvaliable = function(searchBy, valueToSearch){
+    return new Promise((resolve, reject) => {
+        
         clearTimeout(timeout);
         timeout =  setTimeout(() => {
-            const random = Math.round(Math.random()) ? true : false;
-            resolve(random)
-        }, 600);
+            request.get(`${BASE_URL}/users/check-avaliable/?searchBy=${searchBy}&valueToSearch=${valueToSearch}`)
+                .then( isAvaliable =>  resolve(isAvaliable) )
+                .catch( err => reject(err));
+        }, 800);
+    
     })
 }
 
-signupRequests.checkEmailTaken = async function(email){
-    return new Promise((resolve) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            const random = Math.round(Math.random()) ? true : false;
-            resolve(random)
-        }, 600);
-    })
+
+signupRequests.signupUser = async function(userDataObj){
+    const isSignup = await request.post(`${BASE_URL}/users/`, userDataObj)
+    return isSignup;
 }
 
 

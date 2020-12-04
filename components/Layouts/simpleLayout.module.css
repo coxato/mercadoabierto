@@ -21,14 +21,12 @@
     overflow: hidden;
     box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
     margin: -6.875rem auto 0;
-    max-width: 26.5rem;
-    min-height: 25.5625rem;
-    padding: 2rem 4rem;
+    padding: 2rem 3.5rem;
 }
 
 
 @media screen and (max-width: 450px){
     .childrenContainer{
-        top: 26%;
+        top: 24%;
     }
 }

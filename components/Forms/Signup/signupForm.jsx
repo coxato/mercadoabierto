@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button, Form, Input, Message, Container, Header } from 'semantic-ui-react';
+import { Button, Form, Input, Message, Header } from 'semantic-ui-react';
 import InputEmailCheck from './inputEmail';
 import InputUsernameCheck from './inputUsername';
 
@@ -14,42 +14,41 @@ const SignupForm = ({
 }) => {
     
     return(
-        <Container >
+        <div className="signup-container">
             <Header as="h1" textAlign="center">Fill in your details</Header>
 
+            {
+                error.is && (
+                    <Message
+                        error
+                        header={error.title}
+                        content={error.text}
+                    />
+                )
+            }
+            {
+                success.is && (
+                    <Message
+                        success
+                        header={success.title}
+                        content={success.text}
+                    />
+                )
+            }
+
             <Form onSubmit={handleSubmit}>
-                {
-                    error.is && (
-                        <Message
-                            error
-                            header={error.title}
-                            content={error.text}
-                        />
-                    )
-                }
-
-                {
-                    success.is && (
-                        <Message
-                            success
-                            header={success.title}
-                            content={success.text}
-                        />
-                    )
-                }
-
-                <Form.Field>
-                    <label>First Name</label>
-                    <Input name="first_name" onChange={handleChange} placeholder='First Name' minLength="2" />
-                </Form.Field>
-                <Form.Field>
-                    <label>Last Name</label>
-                    <Input name="last_name" onChange={handleChange} placeholder='Last Name' minLength="2" />
-                </Form.Field>
+                <Form.Group widths="equal">
+                    <Form.Input  name="first_name" onChange={handleChange} placeholder='First Name' minLength="2" label="First name" required />
+                    <Form.Input  name="last_name" onChange={handleChange} placeholder='Last Name' minLength="2" label="Last name" required />
+                </Form.Group>
 
                 <InputUsernameCheck onChangeFinal={handleChange} />
                 
                 <InputEmailCheck onChangeFinal={handleChange} />
+
+                <Form.Group widths="equal">
+                    <Form.Input name="password" onChange={handleChange} placeholder='password' minLength="8" label="Password" type="password" required />
+                </Form.Group>
                 
                 <Button type='submit' primary fluid size='big' loading={loading}>Signup!</Button>
                 
@@ -63,7 +62,13 @@ const SignupForm = ({
                 
 
             </Form>
-        </Container>
+
+            <style jsx>{`
+                .signup-container{
+                    max-width: 34rem;
+                }
+            `}</style>
+        </div>
     )
 }
  

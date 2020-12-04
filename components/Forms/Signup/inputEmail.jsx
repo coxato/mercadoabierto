@@ -18,13 +18,13 @@ const EmailInputCheck = ({onChangeFinal}) => {
             setLoading(true);
             setValue(value);
             
-            const isAvaliable = await signupRequests.checkEmailTaken(value); 
+            const isAvaliable = await signupRequests.checkAvaliable('email', value); 
             
             setLoading(false);
     
             if(isAvaliable){
                 setError(false);
-                onChangeFinal({ target: { email: value } });
+                onChangeFinal({ target: { value, name: 'email' } });
             }
             else{
                 setError('email already in use');
@@ -33,16 +33,17 @@ const EmailInputCheck = ({onChangeFinal}) => {
     }
 
     return (
-        <Form.Field>
-            <label>Email</label>
+        <Form.Group widths="equal">
             <Form.Input 
                 onChange={checkEmail} 
+                label="Email"
                 placeholder="email"
                 loading={loading}
                 defaultValue={_value}
                 error={loading ? false : error}
+                required
             />
-        </Form.Field>
+        </Form.Group>
     );
 }
  

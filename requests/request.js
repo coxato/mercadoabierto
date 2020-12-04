@@ -15,7 +15,10 @@ const setDefaultOptions = ({ token, cancelToken }) => ({
 const manageResponse = responseDataObj => {
     const { error, body, status } = responseDataObj;
 
-    if(error) throw new Error(`${body} \nstatus: ${status}`);
+    if(error) {
+        console.error(`${body} \nstatus: ${status}`);
+        throw new Error(body);
+    }
 
     return body;
 }
@@ -29,7 +32,7 @@ request.get = async function(url, options = {}){
 
     } catch (err) {
         console.error(err);
-        throw new Error(`error with axios ${err.message}`);
+        throw new Error(err.message);
     }
 }
 
@@ -43,7 +46,7 @@ request.post = async function(url, dataToSend, options = {}){
 
     } catch (err) {
         console.error(err);
-        throw new Error(`error with axios ${err.message}`);
+        throw new Error(err.message);
     }
 }
 

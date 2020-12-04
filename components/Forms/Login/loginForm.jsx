@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button, Form, Input, Message, Container, Header } from 'semantic-ui-react';
+import { Button, Form, Input, Message, Header } from 'semantic-ui-react';
 
 
 const LoginForm = ({
@@ -12,30 +12,29 @@ const LoginForm = ({
 }) => {
     
     return(
-        <Container >
+        <div className="login-container">
             <Header as="h1" textAlign="center">Hi! Enter your email or username</Header>
             
+            {
+                error.is && (
+                    <Message
+                        error
+                        header={error.title}
+                        content={error.text}
+                    />
+                )
+            }
+            {
+                success.is && (
+                    <Message
+                        success
+                        header={success.title}
+                        content={success.text}
+                    />
+                )
+            }
+            
             <Form onSubmit={handleSubmit}>
-                {
-                    error.is && (
-                        <Message
-                            error
-                            header={error.title}
-                            content={error.text}
-                        />
-                    )
-                }
-
-                {
-                    success.is && (
-                        <Message
-                            success
-                            header={success.title}
-                            content={success.text}
-                        />
-                    )
-                }
-
                 <Form.Field>
                     <label>Email or username</label>
                     <Input name="username_or_email" onChange={handleChange} placeholder='put your email or username' />
@@ -56,7 +55,14 @@ const LoginForm = ({
                 </Link>
 
             </Form>
-        </Container>
+
+            <style jsx>{`
+                .login-container{
+                    max-width: 26.5rem;
+                    min-height: 25.5625rem;
+                }
+            `}</style>
+        </div>
     )
 }
  
