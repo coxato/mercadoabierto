@@ -13,6 +13,10 @@ const config = {
         storageBucket: process.env.STORAGE_BUCKET || "",
         messagingSenderId: process.env.MESSAGING_SENDER_ID || "",
         appId: process.env.APP_ID || ""          
+    },
+
+    api: {
+        baseUrl: 'http://localhost:5000/api'
     }
 
 

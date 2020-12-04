@@ -1,0 +1,15 @@
+:root{
+    --yellow: #fff159ff;
+    --blue: #3484faff;
+    --light: #ebebebff;
+    --black: #333333ff;
+    --green: #00a650ff;
+}
+
+html,
+body,
+div#__next,
+div#__next > div
+{    
+    min-height: 100vh;
+}
