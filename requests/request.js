@@ -3,8 +3,9 @@ import { getToken } from '../utils/token';
 
 const request = {};
 
-const setDefaultOptions = ({ token, cancelToken }) => ({
+const setDefaultOptions = ({ headers, token, cancelToken }) => ({
     headers: {
+        ...headers,
         "Content-type": "application/json",
         ...(token && { authorization: `Bearer ${getToken()}` }) 
     },

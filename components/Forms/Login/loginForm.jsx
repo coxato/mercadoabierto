@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button, Form, Input, Message, Header } from 'semantic-ui-react';
+import { Button, Form, Message, Header } from 'semantic-ui-react';
 
 
 const LoginForm = ({
@@ -37,11 +37,11 @@ const LoginForm = ({
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
                     <label>Email or username</label>
-                    <Input name="username_or_email" onChange={handleChange} placeholder='put your email or username' />
+                    <Form.Input name="username_or_email" onChange={handleChange} placeholder='put your email or username' required />
                 </Form.Field>
                 <Form.Field>
                     <label>Password</label>
-                    <Input  name="password" type="password" onChange={handleChange} placeholder="password" />
+                    <Form.Input  name="password" type="password" onChange={handleChange} placeholder="password" required />
                 </Form.Field>
                 
                 <Button type='submit' primary fluid size='big' loading={loading}>Login!</Button>

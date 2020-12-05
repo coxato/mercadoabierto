@@ -13,3 +13,8 @@ div#__next > div
 {    
     min-height: 100vh;
 }
+
+/* semantic ui overwrite */
+.ui.dimmer>.content{
+    width: 100%;
+}
