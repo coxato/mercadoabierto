@@ -91,4 +91,28 @@ mediaRequests.savePhotoData = async function({
 }
 
 
+/**
+ * @param {object} { photo_fullname, successCallback, errorCallback }
+ * @returns {Promise<void>}
+ */
+mediaRequests.deletePhotoData = async function({
+    photo_fullname,
+    successCallback = ()=>{},
+    errorCallback = ()=>{},
+}){
+    try {
+        await request.delete(
+            `${BASE_URL}/products/media/${photo_fullname}`,
+            {},
+            { token: true }
+        );
+        successCallback();
+
+    } catch (err) {
+        console.error("error deleting photo data in server " + err.message);
+        errorCallback("error deleting photo");
+    }
+}
+
+
 export default mediaRequests;

@@ -51,4 +51,20 @@ request.post = async function(url, dataToSend, options = {}){
     }
 }
 
+
+request.delete = async function(url, dataToSend = {}, options = {}){
+    try {
+        const { data } = await axios.delete(url, {
+            ...setDefaultOptions(options),
+            data: dataToSend
+        })
+
+        return manageResponse(data);
+
+    } catch (err) {
+        console.error(err);
+        throw new Error(err.message);
+    }
+}
+
 export default request;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import mediaRequests from '../../requests/media';
 import { useProductCreation } from '../../store/product';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Loader, Message } from 'semantic-ui-react';
 
 const PhotoDelete = ({deleteCallback, imageFile}) => {
 
@@ -10,19 +10,48 @@ const PhotoDelete = ({deleteCallback, imageFile}) => {
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
-    const handleDelete = async () => {
-        const photoFullName = `${productState.id_album}-${imageFile.name}`;
+    const photoFullName = `${productState.id_album}-${imageFile.name}`;
 
-        mediaRequests.deleteFile({
-            fileUrl: `products/${photoFullName}`,
-            successCallback: deleteCallback,
+    // delete from mysql server
+    const deleteFromServer = () => {
+        mediaRequests.deletePhotoData({
+            photo_fullname: photoFullName,
+            successCallback: () => {
+                setDeleting(false);
+                deleteCallback();
+            },
             errorCallback: setError
         })
     }
 
+    // delete from firebase all call deleteFromServer() to delete it in mysql too.
+    const handleDelete = async () => {
+        setDeleting(true);
+
+        mediaRequests.deleteFile({
+            fileUrl: `products/${photoFullName}`,
+            successCallback: deleteFromServer,
+            errorCallback: setError
+        })
+    }
+
+
     return (
         <div className="container" onClick={handleDelete}>
-            <Icon name="delete" size="huge" color="red" />
+            {
+                deleting ? (
+                    <Loader active size="medium" />
+                ) : (
+                    <Icon name="delete" size="huge" color="red" />
+                )
+            }
+            {
+                error && <Message error header={error} />
+            }
+
+            <style jsx>{`
+                .container{ cursor: pointer; }
+            `}</style>
         </div>
     );
 }
