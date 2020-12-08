@@ -7,7 +7,7 @@ import { useProductCreation } from '../../store/product';
 const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
     
     // global state
-    const [ productState ] = useProductCreation();
+    const { state: { id_album } } = useProductCreation();
     
     // local state
     
@@ -40,7 +40,7 @@ const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
         setError(null);
 
         try {
-            const photoFullName = `${productState.id_album}-${imageFile.name}`;
+            const photoFullName = `${id_album}-${imageFile.name}`;
             
             const downloadUrl = await mediaRequests.uploadFile({
                 file: imageFile,
@@ -50,7 +50,7 @@ const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
             
             await mediaRequests.savePhotoData({
                 photoData: {
-                    id_album: productState.id_album,
+                    id_album: id_album,
                     photo_fullname: photoFullName,
                     photo_url: downloadUrl
                 },

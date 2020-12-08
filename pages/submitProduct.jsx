@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import PhotoUploadContainer from '../components/Media/photoContainer';
+// components
+import ProductFormContainer from '../components/Forms/ProductForms/ProductFormContainer';
 // store
 import { useProductCreation } from '../store/product';
 
 const SubmitProductPage = () => {
 
-    const [, dispatch ] = useProductCreation();
+    const  { dispatch } = useProductCreation();
     
     useEffect(() => {
         dispatch({type: 'new-id_album'});
@@ -13,7 +14,7 @@ const SubmitProductPage = () => {
 
     return (
         <div>
-            <PhotoUploadContainer />
+            <ProductFormContainer />
         </div> 
     );
 }

@@ -15,12 +15,12 @@ const PhotoUploadComponent = ({
     deleteCallback
 }) => {
 
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(true);
 
     const handleShow = () => setActive(true);
     const handleHide = () => {
-        // don't hide if is uploading
-        if(step !== 1) setActive(false);
+        // only hide when photo is uploaded, to can see it
+        if(step === 2) setActive(false);
     }
 
     const content = [

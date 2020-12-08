@@ -49,7 +49,10 @@ const useProductDispatch = () => {
 }
 
 // public custom hook
-const useProductCreation = () => [useProductState(), useProductDispatch()];
+const useProductCreation = () => ({
+    state: useProductState(),
+    dispatch: useProductDispatch()
+});
 
  
 export default ProductCreationHOC;

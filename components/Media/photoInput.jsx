@@ -1,5 +1,4 @@
 import React,  { useRef } from 'react';
-import { Icon } from 'semantic-ui-react';
 
 const PhotoInput = ({ handleSetImage }) => {
     const inputRef = useRef();
@@ -17,7 +16,7 @@ const PhotoInput = ({ handleSetImage }) => {
 
     return (
         <div className="container" onClick={handleClick}>
-            <Icon name="plus circle" size="huge" color="blue" />
+            <p>Click or tap, for add photo</p>
 
             <input type="file" ref={inputRef} onChange={handleChange} />
 
@@ -27,9 +26,16 @@ const PhotoInput = ({ handleSetImage }) => {
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                    background: white;
                 }
 
                 input{ display: none; }
+
+                p{
+                    color: black;
+                    font-weight: bolder;
+                    font-size: 20px
+                }
             `}</style>
         </div>
     );

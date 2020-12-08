@@ -5,12 +5,12 @@ import { Icon, Loader, Message } from 'semantic-ui-react';
 
 const PhotoDelete = ({deleteCallback, imageFile}) => {
 
-    const [productState] = useProductCreation();
+    const { state: { id_album } } = useProductCreation();
 
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
-    const photoFullName = `${productState.id_album}-${imageFile.name}`;
+    const photoFullName = `${id_album}-${imageFile.name}`;
 
     // delete from mysql server
     const deleteFromServer = () => {
