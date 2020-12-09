@@ -12,6 +12,7 @@ productRequests.saveProduct = async function(productData){
 
     } catch ({message}) {
         console.error("[error saving product]", message);
+        throw new Error(message);
     }
 }
 

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 // components
 import { Icon, Header } from 'semantic-ui-react';
 import PhotoContainer from '../../Media/photoContainer';
+import PhotoAlreadyUploaded from '../../Media/photoAlreadyUploaded';
 // style for forms
 import s from './product-forms.module.css';
 
-const ProductPhotosForm = ({handleChange}) => {
+const ProductPhotosForm = ({urlsCallback}) => {
     
     const [ photosUrls, setPhotosUrls ] = useState([]); // uploaded photos
     const [ photosCount, setPhotosCount ] = useState(0);
@@ -18,45 +19,38 @@ const ProductPhotosForm = ({handleChange}) => {
         
         setPhotosUrls(newUrls);
         
-        handleChange({
-            target: {
-                name: 'photosUrls',
-                value: newUrls
-            }
-        })
+        urlsCallback(newUrls);
     }
     
     const deleteUrlCallback = (url) => {
-        console.log( url ? '' : '\n############### no vino url!!!!!\n' );
         const photosFilter = photosUrls.filter( photoUrl => photoUrl !== url );
 
         setPhotosUrls(photosFilter);
         removePhotoCount();
 
-        handleChange({
-            target: {
-                name: 'photosUrls',
-                value: photosFilter
-            }
-        })
+        urlsCallback(photosFilter)
     }
   
     const renderPhotosContainers = () => {
         let containers = [];
         let i = 0;
-        console.log("the urls array, INSIDE handler render function", photosUrls);
 
-        while(i < photosCount){
+        while (i < photosCount) {
+            let content;
+
+            if(photosUrls[i]){
+                content = <PhotoAlreadyUploaded uploadedImageUrl={photosUrls[i]} deleteCallback={deleteUrlCallback} />
+            }else{
+                content = <PhotoContainer {...{ saveUrlCallback, deleteUrlCallback}}/>
+            }
+
             containers.push(
-                <PhotoContainer
-                    {...{ 
-                        saveUrlCallback,
-                        deleteUrlCallback,
-                        uploadedImageUrl: photosUrls[i]
-                    }}
-                    key={i}
-                />
-            )
+                // a little uggly solution, using Math.random
+                <div key={Math.random()+Math.random()}>
+                    {content}
+                </div>
+            );
+            
             i++;
         }
 

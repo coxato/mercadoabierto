@@ -1,5 +1,5 @@
 /* simple hero */
 .container{
-    background-color: var(--yellow);
+    /* background-color: var(--yellow); */
     height: 40vh;
 }

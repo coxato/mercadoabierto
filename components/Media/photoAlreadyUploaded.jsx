@@ -1,44 +1,29 @@
+// if the photo is already uploaded, just show it and delete it onClick
 import React, { useState } from 'react'
 import { Dimmer, Image } from 'semantic-ui-react';
 // components
-import PhotoInput from './photoInput';
-import PhotoUpload from './photoUpload';
 import PhotoDelete from './photoDelete';
 
 
-const PhotoUploadComponent = ({ 
-    step, 
-    imageUrl,
-    imageFile, 
-    handleSetImage,
-    handleSetImageUrl,
-    deleteCallback
-}) => {
+const PhotoAlreadyUploaded = ({ deleteCallback, uploadedImageUrl}) => {
 
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
 
     const handleShow = () => setActive(true);
-    const handleHide = () => {
-        // only hide when photo is uploaded, to can see it
-        if(step === 2) setActive(false);
-    }
+    const handleHide = () => setActive(false);
 
-    const content = [
-        <PhotoInput  {...{handleSetImage}} />,
-        <PhotoUpload {...{imageFile, handleSetImageUrl, setActive }} />,
-        <PhotoDelete {...{deleteCallback, imageFile}} />
-    ];
+    const content = <PhotoDelete {...{deleteCallback, uploadedImageUrl}} />;
 
     return (
         <div className="container">
             <Dimmer.Dimmable
                 as={Image}
                 dimmed={active}
-                dimmer={{ active, content: content[step], inverted: true }}
+                dimmer={{ active, content, inverted: true }}
                 onMouseEnter={handleShow}
                 onMouseLeave={handleHide}
                 fluid
-                src={imageUrl}
+                src={uploadedImageUrl}
             />
 
             <style jsx>{`
@@ -57,4 +42,4 @@ const PhotoUploadComponent = ({
     )
 }
 
-export default PhotoUploadComponent;
+export default PhotoAlreadyUploaded;

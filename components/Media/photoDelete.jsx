@@ -3,7 +3,7 @@ import mediaRequests from '../../requests/media';
 import { useProductCreation } from '../../store/product';
 import { Icon, Loader, Message } from 'semantic-ui-react';
 
-const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl}) => {
+const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl = ''}) => {
 
     const { state: { id_album } } = useProductCreation();
 
@@ -30,7 +30,7 @@ const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl}) => {
             photo_fullname: photoFullName,
             successCallback: () => {
                 setDeleting(false);
-                deleteCallback();
+                deleteCallback(uploadedImageUrl);
             },
             errorCallback: setError
         })

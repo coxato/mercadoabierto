@@ -27,6 +27,7 @@ const TitleAndDescription = ({handleChange}) => {
                         name="title"
                         minLength="10"
                         maxLength="60"
+                        required
                         placeholder="Write a very descriptive title, like 'iphone 12 128gb ROM 3gb RAM'"
                     />
                 </Form.Field>
@@ -43,6 +44,7 @@ const TitleAndDescription = ({handleChange}) => {
                         }}
                         name="description"
                         maxLength="1600"
+                        required
                         placeholder="Write a description for your product"
                         style={{ minHeight: 100 }}
                     />

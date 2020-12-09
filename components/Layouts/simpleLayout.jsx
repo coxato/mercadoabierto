@@ -2,10 +2,10 @@ import React from 'react';
 import SimpleHero from '../Heros/simpleHero';
 import s from './simpleLayout.module.css';
 
-const SimpleLayout = ({ children }) => {
+const SimpleLayout = ({ children, heroColor = '' }) => {
     return (
         <div className={s.container}>
-            <SimpleHero />
+            <SimpleHero heroColor={heroColor} />
 
 
             <div className={s.childrenContainer}>

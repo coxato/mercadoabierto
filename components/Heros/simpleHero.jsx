@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './simpleHero.module.css';
 
-const SimpleHero = () => {
+const SimpleHero = ({ heroColor }) => {
     return (
-        <div className={s.container}>
+        <div className={s.container} style={{ backgroundColor: heroColor || 'var(--yellow)' }}>
             hero
         </div>
     );

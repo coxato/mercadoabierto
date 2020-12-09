@@ -27,6 +27,7 @@ const ProductForm = ({ handleChange }) => {
                     fluid
                     label='Quantity'
                     type="number"
+                    required
                 />
             </div>
 
@@ -40,6 +41,7 @@ const ProductForm = ({ handleChange }) => {
                     fluid
                     label='Price (USD)'
                     type="number"
+                    required
                 />
             </div>
 

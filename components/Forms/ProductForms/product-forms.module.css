@@ -4,6 +4,7 @@
     align-items: center;
     background-color: var(--light);
     padding-bottom: 30px;
+    min-height: 100vh;
 }
 
 .formCardsContainer{
@@ -70,7 +71,49 @@
     transition: .3s;
 }
 
+/* success created product */
+.created{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 
+.heroCreated{
+    background: var(--green);
+    width: 100%;
+    height: 230px;
+}
+
+.createdContent{
+    /* background: red; */
+    margin-top: -135px;
+}
+
+.createdCard{
+    background: white;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
+    /* margin: -6.875rem auto 0; */
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.left{
+    text-align: left;
+    margin-right: 40px;
+    /* background: blue; */
+}
+
+.divider{
+    background: #c6c2c2;
+    width: 2px;
+    height: 130px;
+    margin-right: 40px;
+}
 
 
 
