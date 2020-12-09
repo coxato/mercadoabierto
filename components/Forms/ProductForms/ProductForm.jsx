@@ -1,39 +1,28 @@
 import React from 'react';
-import { Form, Header, Button } from 'semantic-ui-react';
+import { Form, Header } from 'semantic-ui-react';
 // components
+import CategoriesList from './ProductCategoryList';
 import TitleAndDescription from './ProductTitleAndDescription';
+import NewOrUsed from './productNewOrUsed';
 // style for product forms
 import s from './product-forms.module.css';
 
-const categories = ['smartphones', 'tv', 'smartwatchs', 'laptops', 'videogames', 'pc-components'];
-const categoriesOpts = categories.map( category => ({
-    key: category,
-    text: category,
-    value: category,
-}))
 
-const ProductForm = () => {
+const ProductForm = ({ handleChange }) => {
     return (
         <div className={s.formCardsContainer}>
 
             <Header textAlign="center" content="Sell a tech product!" as="h1" />
             
-            <Header textAlign="left" content="First, select a category" as="h4" />
-            <div className={s.formCard}>
-                <Form.Select
-                    fluid
-                    label='Category'
-                    options={categoriesOpts}
-                    placeholder='Category'
-                />
-            </div>
+            <CategoriesList handleChange={handleChange} />
 
             <Header textAlign="left" content="Now, Describe your product" as="h4" />
-            <TitleAndDescription />
+            <TitleAndDescription handleChange={handleChange} />
 
             <Header textAlign="left" content="How many will you sell?" as="h4" />
             <div className={s.formCard}>
                 <Form.Input
+                    onChange={handleChange}
                     name="quantity"
                     fluid
                     label='Quantity'
@@ -41,21 +30,12 @@ const ProductForm = () => {
                 />
             </div>
 
-            <Header textAlign="left" content="Is it new or used?" as="h4" />
-            <div className={s.formCard}>
-                <div className={s.btns}>
-                    <div className={s.btn} style={{borderColor: 'transparent'}}>
-                        <Button>New</Button>
-                    </div>
-                    <div className={s.btn} style={{borderColor: 'var(--blue)'}}>
-                        <Button>Used</Button>
-                    </div>
-                </div>
-            </div>
+            <NewOrUsed handleChange={handleChange} />            
 
             <Header textAlign="left" content="A very important thing, the price" as="h4" />
             <div className={s.formCard}>
                 <Form.Input
+                    onChange={handleChange}
                     name="price"
                     fluid
                     label='Price (USD)'

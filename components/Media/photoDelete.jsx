@@ -3,14 +3,26 @@ import mediaRequests from '../../requests/media';
 import { useProductCreation } from '../../store/product';
 import { Icon, Loader, Message } from 'semantic-ui-react';
 
-const PhotoDelete = ({deleteCallback, imageFile}) => {
+const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl}) => {
 
     const { state: { id_album } } = useProductCreation();
 
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
-    const photoFullName = `${id_album}-${imageFile.name}`;
+    // if this is a re render, we receive the firebase image location
+    // if it is not, construct the image name
+    let photoFullName;
+    if(uploadedImageUrl){
+        const url = new URL(uploadedImageUrl),
+        decoded = decodeURIComponent(url.pathname.match(/products.+/g)),
+        parsedFilename = decoded.replace('products/', '');
+
+        photoFullName = parsedFilename;
+    }
+    else{
+        photoFullName = `${id_album}-${imageFile.name}`;
+    }   
 
     // delete from mysql server
     const deleteFromServer = () => {

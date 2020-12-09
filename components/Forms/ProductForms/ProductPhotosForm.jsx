@@ -5,7 +5,7 @@ import PhotoContainer from '../../Media/photoContainer';
 // style for forms
 import s from './product-forms.module.css';
 
-const ProductPhotosForm = () => {
+const ProductPhotosForm = ({handleChange}) => {
     
     const [ photosUrls, setPhotosUrls ] = useState([]); // uploaded photos
     const [ photosCount, setPhotosCount ] = useState(0);
@@ -14,24 +14,46 @@ const ProductPhotosForm = () => {
     const removePhotoCount = () => photosCount > 0 ? setPhotosCount(photosCount-1) : null;
 
     const saveUrlCallback = (url) => {
-        setPhotosUrls( prevState => [...prevState, url]);
+        const newUrls = [...photosUrls, url];
+        
+        setPhotosUrls(newUrls);
+        
+        handleChange({
+            target: {
+                name: 'photosUrls',
+                value: newUrls
+            }
+        })
     }
     
     const deleteUrlCallback = (url) => {
+        console.log( url ? '' : '\n############### no vino url!!!!!\n' );
         const photosFilter = photosUrls.filter( photoUrl => photoUrl !== url );
 
-        removePhotoCount();
         setPhotosUrls(photosFilter);
+        removePhotoCount();
+
+        handleChange({
+            target: {
+                name: 'photosUrls',
+                value: photosFilter
+            }
+        })
     }
   
     const renderPhotosContainers = () => {
         let containers = [];
         let i = 0;
+        console.log("the urls array, INSIDE handler render function", photosUrls);
 
         while(i < photosCount){
             containers.push(
                 <PhotoContainer
-                    {...{ saveUrlCallback, deleteUrlCallback }}
+                    {...{ 
+                        saveUrlCallback,
+                        deleteUrlCallback,
+                        uploadedImageUrl: photosUrls[i]
+                    }}
                     key={i}
                 />
             )
@@ -47,7 +69,7 @@ const ProductPhotosForm = () => {
 
             <div className={s.formCard}>
                 <div className={s.photosContainer}>
-
+                    {/* {console.log("the urls array, when delete", photosUrls)} */}
                     {renderPhotosContainers()}
 
                     {

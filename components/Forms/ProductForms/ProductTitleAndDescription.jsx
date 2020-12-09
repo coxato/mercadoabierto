@@ -4,7 +4,7 @@ import { Form, TextArea } from 'semantic-ui-react';
 import s from './product-forms.module.css';
 
 
-const TitleAndDescription = () => {
+const TitleAndDescription = ({handleChange}) => {
 
     const [titleLen, setTitleLen] = useState(0);
     const [descriptionLen, setDescriptionLen] = useState(0);
@@ -22,6 +22,7 @@ const TitleAndDescription = () => {
                     <Form.Input
                         onChange={ ev => {
                             setLen(ev);
+                            handleChange(ev);
                         }}
                         name="title"
                         minLength="10"
@@ -38,6 +39,7 @@ const TitleAndDescription = () => {
                     <TextArea
                         onChange={ ev => {
                             setLen(ev);
+                            handleChange(ev);
                         }}
                         name="description"
                         maxLength="1600"

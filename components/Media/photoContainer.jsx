@@ -14,11 +14,17 @@ let successUploadTimer;
 // TODO: 
 // have an unique id per photo, so the full name should be: `${id_album}-${id_photo}-${imageFile.name}`;
 
-const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback }) => {
+const PhotoUploadContainer = ({ 
+    saveUrlCallback, 
+    deleteUrlCallback, 
+    uploadedImageUrl = '' // re render
+}) => {
+
+    const defaultImageUrl = '/images/default-image.png'; 
 
     const [imageFile, setImageFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState('/images/default-image.png');
-    const [step, setStep] = useState(steps.toUpload);
+    const [imageUrl, setImageUrl] = useState(uploadedImageUrl || defaultImageUrl);
+    const [step, setStep] = useState( uploadedImageUrl ? steps.uploaded : steps.toUpload );
 
     const handleSetImage = (image) => {
         setImageFile(image);
@@ -36,10 +42,12 @@ const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback }) => {
     }
 
     const deleteCallback = () => {
-        const oldUrl = imageUrl;
+        const oldUrl = uploadedImageUrl || imageUrl;
 
-        setImageUrl('/images/default-image.png');
-        setStep(steps.toUpload);
+        if(!uploadedImageUrl){
+            setImageUrl('/images/default-image.png');
+            setStep(steps.toUpload);
+        }
         
         // parent component callback
         deleteUrlCallback(oldUrl);
@@ -55,6 +63,7 @@ const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback }) => {
         <PhotoUploadComponent
             {...{
                 imageUrl,
+                uploadedImageUrl,
                 imageFile,
                 handleSetImage,
                 handleSetImageUrl,

@@ -8,7 +8,8 @@ import PhotoDelete from './photoDelete';
 
 const PhotoUploadComponent = ({ 
     step, 
-    imageUrl, 
+    imageUrl,
+    uploadedImageUrl, 
     imageFile, 
     handleSetImage,
     handleSetImageUrl,
@@ -26,7 +27,7 @@ const PhotoUploadComponent = ({
     const content = [
         <PhotoInput  {...{handleSetImage}} />,
         <PhotoUpload {...{imageFile, handleSetImageUrl, setActive }} />,
-        <PhotoDelete {...{deleteCallback, imageFile}} />
+        <PhotoDelete {...{deleteCallback, imageFile, uploadedImageUrl}} />
     ];
 
     return (
@@ -38,7 +39,7 @@ const PhotoUploadComponent = ({
                 onMouseEnter={handleShow}
                 onMouseLeave={handleHide}
                 fluid
-                src={imageUrl}
+                src={uploadedImageUrl || imageUrl}
             />
 
             <style jsx>{`
