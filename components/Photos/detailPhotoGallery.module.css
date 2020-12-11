@@ -1,7 +1,8 @@
 .container{
     /* background: yellowgreen; */
     display: flex;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    position: relative;
     /* align-items: center; */
 }
 
@@ -15,6 +16,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .sliderPhoto{
@@ -25,12 +27,16 @@
 .buttonBack{
     position: absolute;
     top: 50%;
+    background-color: transparent;
+    border: none;
 }
 
 .buttonNext{
     position: absolute;
     right: 0;
     top: 50%;
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -84,4 +90,12 @@
 
 .itemOverlay:hover{
     background-color: #ffffff41;
+}
+
+
+.enlargedImageContainer{
+    border: 2px solid black;
+    z-index: 4;
+    position: absolute;
+    left: 102%;
 }

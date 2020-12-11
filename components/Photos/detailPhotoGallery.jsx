@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Icon } from 'semantic-ui-react';
 import { 
     CarouselProvider, 
     Slider, 
@@ -6,6 +7,7 @@ import {
     ButtonBack, 
     ButtonNext, 
 } from 'pure-react-carousel';
+import ReactImageMagnify from 'react-image-magnify';
 // components
 import PhotosColumn from './photosColumn';
 // style
@@ -32,6 +34,8 @@ const DetailPhotoGallery = ({ photos }) => {
                     setPhotoIndex={setPhotoIndex}    
                 />
             </div>
+
+            <div id="enlargedContainer" />
             
             {/* photos carousel */}
             <CarouselProvider
@@ -48,7 +52,22 @@ const DetailPhotoGallery = ({ photos }) => {
                             photos.map( ({photo_url}, idx) => (
                                 <Slide index={idx} key={idx}>
                                     <div className={s.sliderPhotoCont}>
-                                        <img src={photo_url} alt={photo_url} className={s.sliderPhoto} />
+                                        {/* <img src={photo_url} alt={photo_url} className={s.sliderPhoto} /> */}
+                                        <ReactImageMagnify {...{
+                                            smallImage: {
+                                                alt: 'mercadoabierto photo',
+                                                isFluidWidth: true,
+                                                src: photo_url
+                                            },
+                                            largeImage: {
+                                                src: photo_url,
+                                                width: 600,
+                                                height: 600
+                                            },
+                                            shouldUsePositiveSpaceLens: true,
+                                            enlargedImagePortalId: 'enlargedContainer',
+                                            enlargedImageContainerClassName: s.enlargedImageContainer,
+                                        }} />
                                     </div>
                                 </Slide>
                             ))
@@ -58,13 +77,13 @@ const DetailPhotoGallery = ({ photos }) => {
                     <ButtonBack 
                         onClick={handleBack} 
                         className={s.buttonBack}>
-                            Back
+                            <Icon size="big" color={ photoIndex === 0 ? "grey" : "blue" } name="chevron left" />
                     </ButtonBack>
 
                     <ButtonNext 
                         onClick={handleNext} 
                         className={s.buttonNext}>
-                            Next
+                            <Icon size="big" color={ photoIndex === photos.length-1 ? "grey" : "blue" } name="chevron right" />
                     </ButtonNext>
                 </div>
             </CarouselProvider>

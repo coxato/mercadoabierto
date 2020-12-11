@@ -24,6 +24,7 @@
     "pure-react-carousel": "^1.27.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-image-magnify": "^2.7.4",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1"
   }
