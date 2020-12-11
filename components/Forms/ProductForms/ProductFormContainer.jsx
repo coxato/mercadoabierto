@@ -55,6 +55,7 @@ const ProductFormContainer = () => {
             setErrors([]);
         }
 
+        // create and save product
         productRequests.saveProduct(data)
             .then( createdData => {
                 setProductCreatedData(createdData);

@@ -1,0 +1,23 @@
+.container{
+    /* background: red; */
+    padding: 40px;
+}
+
+.upside{
+    /* background: blue; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.photos{
+    /* background: green; */
+}
+
+.basicInfo{
+    /* background: hotpink; */
+}
+
+.downside{
+    /* background: yellow; */
+}

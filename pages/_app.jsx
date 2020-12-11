@@ -1,4 +1,6 @@
 import React from 'react';
+// global styles
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import 'semantic-ui-css/semantic.min.css';
 import '../global.css';
 

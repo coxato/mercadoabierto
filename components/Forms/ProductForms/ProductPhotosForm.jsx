@@ -63,7 +63,7 @@ const ProductPhotosForm = ({urlsCallback}) => {
 
             <div className={s.formCard}>
                 <div className={s.photosContainer}>
-                    {/* {console.log("the urls array, when delete", photosUrls)} */}
+                    
                     {renderPhotosContainers()}
 
                     {

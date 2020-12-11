@@ -17,4 +17,16 @@ productRequests.saveProduct = async function(productData){
 }
 
 
+productRequests.getProductById = async function(id){
+    try {
+        const product = await request.get(`${BASE_URL}/products/${id}`);
+        return product;
+
+    } catch ({message}) {
+        console.error("[error getting product]", message);
+        throw new Error(message);
+    }
+}
+
+
 export default productRequests;

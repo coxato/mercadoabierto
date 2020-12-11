@@ -1,0 +1,87 @@
+.container{
+    /* background: yellowgreen; */
+    display: flex;
+    border: 2px solid black;
+    /* align-items: center; */
+}
+
+.sliderContainer{
+    /* width: 500px; */
+    position: relative;
+}
+
+.sliderPhotoCont{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sliderPhoto{
+    width: 100%;
+    margin: auto;
+}
+
+.buttonBack{
+    position: absolute;
+    top: 50%;
+}
+
+.buttonNext{
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+
+
+
+.photosColumnContainer{
+    /* background: blueviolet; */
+    padding: 2px;
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+/* .photosChain{
+     background: red;
+} */
+
+.photoItemCont{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--light);
+    margin-bottom: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.activeItem{
+    position: absolute;
+    width: 4px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.photoItem{
+    width: 100%;
+}
+
+.itemOverlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    transition: .2s;
+}
+
+.itemOverlay:hover{
+    background-color: #ffffff41;
+}
