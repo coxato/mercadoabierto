@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { nanoid } from 'nanoid';
+// reducer
+import productCreationReducer from './reducers/product';
 
 // this is a really verbose solution for a simple problem
 // but I just want to practice a concept that I seed in a blog
@@ -10,16 +11,6 @@ import { nanoid } from 'nanoid';
 
 const StateContext = createContext();
 const DispatchContext = createContext();
-
-function productCreationReducer(state, action) {
-    switch (action.type) {
-        case 'new-id_album':
-            return { ...state, id_album: nanoid() }
-    
-        default:
-            return state;
-    }
-}
 
 
 const ProductCreationHOC = ({ children }) => {

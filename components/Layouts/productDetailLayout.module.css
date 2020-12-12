@@ -1,23 +1,27 @@
 .container{
-    /* background: red; */
+    background: var(--light);
     padding: 40px;
 }
 
 .upside{
-    /* background: blue; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 55% 45%;
+    box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
+    border: 1px solid #ddd;
 }
 
 .photos{
-    /* background: green; */
+    background: white;
+    /* padding: 20px; */
 }
 
 .basicInfo{
-    /* background: hotpink; */
+    background: white;
+    padding: 20px;
+    border-left: 1px solid #ddd;
 }
 
 .downside{
-    /* background: yellow; */
+    background: white;
+    box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
 }

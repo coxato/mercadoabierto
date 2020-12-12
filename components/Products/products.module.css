@@ -1,0 +1,12 @@
+/* basic info */
+.basicInfoCont{
+    /* background-color: rebeccapurple; */
+    padding: 20px;
+
+}
+
+.basicInfoWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

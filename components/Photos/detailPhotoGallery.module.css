@@ -9,6 +9,10 @@
 .sliderContainer{
     /* width: 500px; */
     position: relative;
+    /* display: flex;
+    justify-content: center; */
+    /* background: yellow; */
+    padding: 30px;
 }
 
 .sliderPhotoCont{
@@ -17,6 +21,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    /* background: green; */
 }
 
 .sliderPhoto{
@@ -26,7 +32,8 @@
 
 .buttonBack{
     position: absolute;
-    top: 50%;
+    top: 49.3%;
+    left: 2px;
     background-color: transparent;
     border: none;
 }
@@ -94,8 +101,9 @@
 
 
 .enlargedImageContainer{
-    border: 2px solid black;
+    border: 2px solid rgb(31, 20, 179);
     z-index: 4;
     position: absolute;
     left: 102%;
+    width: 100%;
 }

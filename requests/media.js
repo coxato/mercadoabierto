@@ -27,7 +27,7 @@ mediaRequests.uploadFile = function({ file, uploadUrl, progressCallback = ()=>{}
             uploadTask.on('state_changed',
                 // progress
                 (snapshot) => {
-                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    let progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
                     progressCallback(progress);  
                 },
 

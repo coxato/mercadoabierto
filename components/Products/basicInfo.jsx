@@ -1,17 +1,32 @@
 import React from 'react';
-import { Header, Button } from 'semantic-ui-react';
+import { useRouter } from 'next/router';
+import { Header } from 'semantic-ui-react';
+// components
+import AddToCart from '../Cart/cartButtonContainer';
+// style
 import s from './products.module.css';
 
 const BasicInfo = ({ title, price, quantity, new: _new }) => {
+
+    const { query } = useRouter();
+
     return (
         <div className={s.basicInfoCont}>
-            <Header as="h1" content={title} />
+            <Header as="h3" content={ _new ? 'new' : 'used' } textAlign="left" />
+            
+            <div className={s.basicInfoWrapper}>
+                <Header as="h1" content={title} />
 
-            <Header as="h2" content={'$' + price}  />
+                <Header as="h2" content={'$' + price}  />
 
-            <Header as="h4" content={ _new ? 'new' : 'used' }  />
-
-            <Button primary size="huge" >{quantity} Buy</Button>
+                <div className={s.addToCart}>
+                    <AddToCart
+                        productId={query.productId}
+                        avaliableQty={quantity}
+                    />
+                </div>
+            </div>
+            
         </div>
     );
 }
