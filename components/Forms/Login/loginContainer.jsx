@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+// custom hook
+import { useUser } from '../../../store/user';
+// components
 import LoginForm from './loginForm';
 import loginRequests from '../../../requests/login';
+import userRequests from '../../../requests/user';
 
 let redirectTimer;
 
 const LoginContainer = () => {
 
     const router = useRouter();
+    const { saveUserInfo } = useUser();
 
     const [state, setState] = useState({});
     const [loading, setLoading] = useState(false);
@@ -29,12 +34,16 @@ const LoginContainer = () => {
             setError({ is: false, title: '', text: '' });
             setSuccess({ is: false, title: '', text: '' });
 
-            // signup user
+            // login user
             await loginRequests.login(state);
+            // get basic user info
+            const userBasicData = await userRequests.getInfoLogged();
             
             setLoading(false);
             setSuccess({ is: true, title: 'Welcome!', text: 'We are redirecting you to the homepage'});
+            
             redirectTimer = setTimeout(() => {
+                saveUserInfo(userBasicData);
                 router.push("/");
             }, 4000);
 

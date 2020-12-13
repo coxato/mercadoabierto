@@ -5,7 +5,7 @@
 
 .upside{
     display: grid;
-    grid-template-columns: 55% 45%;
+    grid-template-columns: 60% 40%;
     box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
     border: 1px solid #ddd;
 }

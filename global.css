@@ -18,3 +18,8 @@ div#__next > div
 .ui.dimmer>.content{
     width: 100%;
 }
+
+/* pure-react-carousel overwrite */
+.carousel{
+    margin: auto;
+}

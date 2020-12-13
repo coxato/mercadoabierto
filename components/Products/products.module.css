@@ -10,3 +10,25 @@
     flex-direction: column;
     align-items: center;
 }
+
+.price{
+    font-size: 60px;
+    font-weight: 100;
+}
+
+.fullInfoCont{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.fullInfoLeft{
+    padding: 30px;
+    font-size: 18px;
+}
+
+.fullInfoRight{
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}

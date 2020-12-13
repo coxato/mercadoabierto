@@ -17,7 +17,7 @@ const BasicInfo = ({ title, price, quantity, new: _new }) => {
             <div className={s.basicInfoWrapper}>
                 <Header as="h1" content={title} />
 
-                <Header as="h2" content={'$' + price}  />
+                <h2 className={s.price} >${price}</h2>
 
                 <div className={s.addToCart}>
                     <AddToCart

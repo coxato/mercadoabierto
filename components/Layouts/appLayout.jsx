@@ -1,14 +1,18 @@
 import React from 'react';
+// components
+import AppNavbar from '../Navs/appNavbar';
+import Footer from '../Footers/footer';
+// style
 import s from './appLayout.module.css';
 
 const AppLayout = ({ children }) => {
     return (
         <div className={s.container}>
-            <h1>NAVBAR</h1>
+            <AppNavbar />
 
             {children}
 
-            <h1>FOOTER</h1>
+            <Footer />
         </div>
     );
 }

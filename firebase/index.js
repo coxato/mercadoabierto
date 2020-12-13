@@ -5,7 +5,6 @@ import config from '../config';
 let storage;
 
 try {
-
     firebase.initializeApp(config.firebase);
     storage = firebase.storage();
 
@@ -15,9 +14,6 @@ try {
     }
 }
 
-
-export {
-    storage
-}
+export { storage }
 
 export default firebase;

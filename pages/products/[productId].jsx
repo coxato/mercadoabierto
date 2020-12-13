@@ -4,7 +4,10 @@ import ProductDetail from '../../components/Products/productDetail';
 
 
 export const getServerSideProps = async ({ params: { productId } }) => {
-    const { productData, photos } = await productRequests.getProductById(productId);
+    const { 
+        productData, 
+        photos, 
+        sellerData } = await productRequests.getProductById(productId);
 
     if(!productData){
         return { notFound: true }
@@ -13,15 +16,16 @@ export const getServerSideProps = async ({ params: { productId } }) => {
     return {
         props: {
             productData,
-            photos
+            photos,
+            sellerData
         }
     }
 }
 
-const ProductPage = ({ productData, photos }) => {
+const ProductPage = ({ productData, photos, sellerData }) => {
     return (
-        <ProductDetail {...{productData, photos}} />
+        <ProductDetail {...{productData, photos, sellerData}} />
     );
 }
- 
+
 export default ProductPage;

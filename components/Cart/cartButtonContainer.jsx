@@ -21,6 +21,7 @@ const AddToCartButtonContainer = ({productId, avaliableQty}) => {
             <style jsx>{`
                 .container{
                     padding: 30px 0;
+                    margin-top: 25px;
                 }
             `}</style>
         </div>
