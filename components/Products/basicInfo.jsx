@@ -1,18 +1,24 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Header } from 'semantic-ui-react';
+import { useUserInfo } from '../../store/user';
+import { Header, Button, Label } from 'semantic-ui-react';
 // components
 import AddToCart from '../Cart/cartButtonContainer';
 // style
 import s from './products.module.css';
 
-const BasicInfo = ({ title, price, quantity, new: _new }) => {
+const BasicInfo = ({ title, price, quantity, new: _new, id_user: productUserId }) => {
 
     const { query } = useRouter();
+    const { id_user: userId } = useUserInfo();
 
     return (
         <div className={s.basicInfoCont}>
-            <Header as="h3" content={ _new ? 'new' : 'used' } textAlign="left" />
+            <div className={s.labelPrice}>
+                <Label as='p' color={_new ? 'blue' : 'yellow'} ribbon="right">
+                    { _new ? 'NEW' : 'USED' }
+                </Label>
+            </div>
             
             <div className={s.basicInfoWrapper}>
                 <Header as="h1" content={title} />
@@ -20,10 +26,20 @@ const BasicInfo = ({ title, price, quantity, new: _new }) => {
                 <h2 className={s.price} >${price}</h2>
 
                 <div className={s.addToCart}>
-                    <AddToCart
-                        productId={query.productId}
-                        avaliableQty={quantity}
-                    />
+                    {
+                        productUserId === userId
+                        ?
+                        <div className={s.isYour}>
+                            <Header as="h3" content="This product is yours" />
+                            <Button color="blue">Update Product</Button>
+                        </div>
+                        :
+                        <AddToCart
+                            productId={query.productId}
+                            avaliableQty={quantity}
+                            userId={userId}
+                        />
+                    }
                 </div>
             </div>
             

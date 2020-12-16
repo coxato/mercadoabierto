@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { 
+    createContext, 
+    useContext, 
+    useReducer, 
+    useEffect, 
+    useState 
+} from 'react';
+
 // reducer
 import userReducer from './reducers/user';
 // types
@@ -13,11 +20,26 @@ const DispatchContext = createContext();
 const UserHOC = ({ children }) => {
     
     const [state, dispatch] = useReducer(userReducer, {});
+    const [loading, setLoading] = useState(true);
+
+    // client side
+    // if user reload the page
+    useEffect(() => {
+        const userInfo = getStorageValues('userInfo');
+        if(userInfo){
+            dispatch({
+                type: ADD_INFO,
+                payload: userInfo
+            })
+        }
+
+        setLoading(false);
+    }, []);
 
     return (
         <StateContext.Provider value={state}>
             <DispatchContext.Provider value={dispatch}>
-                {children}
+                { loading ? null : children }
             </DispatchContext.Provider>
         </StateContext.Provider>
     );
@@ -28,24 +50,21 @@ const useUser = () => {
     const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
 
-
-    function getUserInfo(){
+    function checkIsLogged(){
         // get from localstorage if user reload the page
         if(Object.keys(state).length === 0){
             const userJson = getStorageValues('userInfo');
 
             if(userJson){
                 saveUserInfo(userJson);
-                return userJson;
+                return true;
             }; 
     
-            return null;
+            return false;
         }
 
-        // is already in state and localStorage
-        return state;
+        return true;
     }
-
     
     function saveUserInfo(userInfoObj){
         // save in localstorage if is first time, or user reload the page
@@ -68,14 +87,20 @@ const useUser = () => {
     }
 
     return {
-        getUserInfo,
+        checkIsLogged,
         saveUserInfo,
         removeUserInfo
     }
 }
 
+const useUserInfo = () => {
+    const state = useContext(StateContext);
+    return state;
+}
+
  
 export default UserHOC;
 export {
-    useUser
+    useUser,
+    useUserInfo
 }

@@ -19,6 +19,20 @@ div#__next > div
     width: 100%;
 }
 
+i.icon.icon-no-margin{
+    margin: 0;
+}
+
+.btn-bg-white{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.ui.blue.right.ribbon.label,
+.ui.yellow.right.ribbon.label{
+    margin-left: 27px;
+}
+
 /* pure-react-carousel overwrite */
 .carousel{
     margin: auto;

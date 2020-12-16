@@ -1,30 +1,37 @@
-import React from 'react';
-import { Input } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import cartRequests from '../../requests/cart';
+// store
+import { useCart } from '../../store/cart';
+// components
+import CardButtonComponent from './cardButtonComponent';
+// import SimpleCartHOC from './simpleCartHOC';
 
-const AddToCartButtonContainer = ({productId, avaliableQty}) => {
+const AddToCartButtonContainer = ({userId, productId, avaliableQty}) => {
+    
+    const { addCartItem } = useCart();
+
+    const [qty, setQty] = useState(1);
+    const [loading, setLoading] = useState(false);
+    
+    // save in DB
+    const handleAdd = async () => {
+        setLoading(true);
+
+        const productAdded = await cartRequests.addToCart({ productId, qty, userId });
+        // save in reducer
+        addCartItem(productId, productAdded, qty);
+        
+        setLoading(false);
+    }
+
     return (
-        <div className="container">
-            <Input
-                action={{
-                    color: 'blue',
-                    labelPosition: 'left',
-                    icon: 'cart',
-                    content: 'Add to cart',
-                }}
-                actionPosition='left'
-                placeholder='Quantity'
-                defaultValue='1'
-                type="number"
-                min="1"
-                max={avaliableQty}
-            />
-            <style jsx>{`
-                .container{
-                    padding: 30px 0;
-                    margin-top: 25px;
-                }
-            `}</style>
-        </div>
+        <CardButtonComponent
+            avaliableQty={avaliableQty}
+            handleChange={setQty}
+            value={qty}
+            handleClick={handleAdd}
+            loading={loading}
+        />
     );
 }
  

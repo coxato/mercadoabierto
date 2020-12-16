@@ -1,0 +1,61 @@
+.container{
+    display: flex;
+    position: relative;
+    /* background: red; */
+}
+
+.input{
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    height: 39px;
+    padding: 7px 60px 9px 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 0 rgba(0,0,0,.2);
+    position: relative;
+    box-sizing: border-box;
+    z-index: 915;
+    color: #333;
+    font-size: 16px;
+    margin: 0;
+    font-family: inherit;
+    outline: 0;
+    min-width: 500px;
+    max-width: 600px;
+}
+
+.input::placeholder{
+    color: rgb(197, 197, 197);
+}
+
+.lupe{
+    position: absolute;
+    right: 0;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 915;
+    padding: 0 14px;
+    cursor: pointer;
+}
+
+.lupe::before{
+    content: '';
+    display: block;
+    height: 26px;
+    border-left: 1px solid #e6e6e6;
+    position: absolute;
+    top: 6.5px;
+    right: 43px;
+}
+
+
+
+@media screen and (max-width: 1080px){
+    .input{
+        min-width: initial;
+        max-width: initial;
+        width: 100%;
+    }
+}

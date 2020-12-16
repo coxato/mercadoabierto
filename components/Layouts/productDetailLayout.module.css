@@ -1,6 +1,9 @@
 .container{
     background: var(--light);
-    padding: 40px;
+    padding-right: 65px;
+    padding-left: 65px;
+    padding-bottom: 40px;
+    padding-top: 0;
 }
 
 .upside{

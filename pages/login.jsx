@@ -7,14 +7,14 @@ import Login from '../components/Forms/Login/loginContainer';
 
 const LoginPage = () => {
 
-    const { getUserInfo } = useUser();
+    const { checkIsLogged } = useUser();
     const router = useRouter();
 
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         // if already exist user information in reducer
-        if(getUserInfo()){
+        if(checkIsLogged()){
             router.push('/');
             return null;
         }
@@ -24,11 +24,15 @@ const LoginPage = () => {
     }, []);
 
     return (
-        <Layout>
-            {
-                loading ? null : <Login />
-            }
-        </Layout>
+        <>
+        {
+            !loading ? (
+                <Layout>
+                    <Login />
+                </Layout>
+            ) : null
+        }
+        </>
     );
 }
  

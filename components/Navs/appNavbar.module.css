@@ -1,0 +1,79 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    width: 100%;
+    background-color: var(--yellow);
+    padding: 15px;
+    position: relative;
+    justify-items: center;
+}
+
+.noResponsive{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    /* background: blue; */
+    padding: 2px;
+    width: 180px;
+}
+
+
+.menuIcon{
+    display: none;
+}
+
+.responsive{
+    display: flex;
+}
+
+.cartAndAvatar{
+    display: flex;
+}
+
+.loginSignup{
+    width: 100%;
+}
+
+.loginSignup a{
+    width: 100%;
+    margin: 0 5px;
+}
+
+@media screen and (max-width: 1080px){
+    .menuIcon{
+        display: block;
+        cursor: pointer;
+    }
+
+    .noResponsive{
+        padding: 10px 20px;
+        justify-content: space-between;
+    }
+
+    .container{
+        grid-template-columns: 1fr;
+        justify-items: initial;
+        padding: 0;
+    }
+
+    /* show by state control in appNavbar.jsx */
+    .responsive{
+        display: none;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 20px;
+        background: white;
+    }
+    
+    .searchBar{
+        width: 100%;
+        margin-right: 10px;
+    }
+
+    .cartAndAvatar{
+        width: 300px;
+        justify-content: space-between;
+    }
+}
