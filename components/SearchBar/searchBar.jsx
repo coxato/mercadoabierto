@@ -20,7 +20,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         const { search } = query;
-        console.log("the search query is", search);
+        // console.log("the search query is", search);
         if(search) setValue(search);
     }, []);
 

@@ -26,9 +26,16 @@ cartRequests.addToCart = async function({ productId, userId, qty }) {
 }
 
 
-cartRequests.getUserCartItems = async function(userId) {
+cartRequests.getUserCartItems = async function(userId, jwToken = '') {
+    const options = {
+        ...(!jwToken && { token: true }),
+        ...(jwToken && {
+            headers: { authorization: `Bearer ${jwToken}` }
+        }) 
+    }
+
     try {
-        const items = await request.get(`${BASE_URL}/cart/${userId}`, { token: true });
+        const items = await request.get(`${BASE_URL}/cart/${userId}`, options);
         return items;
 
     } catch ({message}) {

@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { useUser } from '../store/user';
+import { useUserInfo } from '../store/user';
 // components
 import Layout from '../components/Layouts/simpleLayout';
 import Login from '../components/Forms/Login/loginContainer';
 
 const LoginPage = () => {
 
-    const { checkIsLogged } = useUser();
+    const { id_user } = useUserInfo();
     const router = useRouter();
 
-    const [loading, setLoading] = useState(true);
-    
     useEffect(() => {
-        // if already exist user information in reducer
-        if(checkIsLogged()){
-            router.push('/');
-            return null;
-        }
-        else{
-            setLoading(false);
-        }
-    }, []);
+        if(id_user) router.push('/');
+    }, [])
 
     return (
         <>
         {
-            !loading ? (
+            !id_user ? (
                 <Layout>
                     <Login />
                 </Layout>
