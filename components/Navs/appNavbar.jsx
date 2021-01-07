@@ -48,7 +48,17 @@ const AppNavbar = () => {
         <nav className={s.container}>
             <div className={s.noResponsive}>
                 <div className={s.logo}>
-                    LOGO
+                    <Link href="/">
+                        <a>
+                            {
+                                isLaptop 
+                                ?
+                                <img src="/images/full-logo.png" alt="mercadoabierto logo" width="150"/>
+                                :
+                                <img src="/images/logo-v3.png" alt="mercadoabierto logo" width="70"/>
+                            }
+                        </a>
+                    </Link>
                 </div>
 
                 <div className={s.searchBar}>

@@ -1,0 +1,9 @@
+.container{
+    width: 100%;
+    padding: 30px 50px;
+    background: var(--light);
+}
+
+s.btn{
+    background: blue;
+}

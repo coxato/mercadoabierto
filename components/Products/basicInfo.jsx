@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useUserInfo } from '../../store/user';
+import { useCartInfo } from '../../store/cart';
 import { Header, Button, Label } from 'semantic-ui-react';
 // components
 import AddToCart from '../Cart/cartButtonContainer';
@@ -9,8 +10,16 @@ import s from './products.module.css';
 
 const BasicInfo = ({ title, price, quantity, new: _new, id_user: productUserId }) => {
 
-    const { query } = useRouter();
+    const { query, push } = useRouter();
     const { id_user: userId } = useUserInfo();
+    const cartState = useCartInfo();
+
+    const handleLink = () => {
+        push({
+            pathname: `/cart/${userId}`,
+            query: { token: localStorage.getItem('token') }
+        })
+    }
 
     return (
         <div className={s.basicInfoCont}>
@@ -34,10 +43,18 @@ const BasicInfo = ({ title, price, quantity, new: _new, id_user: productUserId }
                             <Button color="blue">Update Product</Button>
                         </div>
                         :
+                        cartState[query.productId] // if is already in cart
+                        ?
+                        <div className={s.inCart}>
+                            <Header as="h3" content="Added to cart" />
+                            <Button onClick={handleLink} color="green">Go to cart</Button>
+                        </div>
+                        :
                         <AddToCart
                             productId={query.productId}
                             avaliableQty={quantity}
                             userId={userId}
+                            price={price}
                         />
                     }
                 </div>

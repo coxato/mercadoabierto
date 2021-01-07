@@ -10,7 +10,9 @@ const AppLayout = ({ children }) => {
         <div className={s.container}>
             <AppNavbar />
 
-            {children}
+            <div className={s.children}>
+                {children}
+            </div>
 
             <Footer />
         </div>

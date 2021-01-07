@@ -2,8 +2,8 @@ import React, {
     createContext, 
     useContext, 
     useReducer, 
-    useEffect, 
-    useState 
+    // useEffect, 
+    // useState 
 } from 'react';
 
 // reducer
@@ -20,26 +20,34 @@ const DispatchContext = createContext();
 const UserHOC = ({ children }) => {
     
     const [state, dispatch] = useReducer(userReducer, {});
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     // client side
     // if user reload the page
-    useEffect(() => {
-        const userInfo = getStorageValues('userInfo');
-        if(userInfo){
-            dispatch({
-                type: ADD_INFO,
-                payload: userInfo
-            })
-        }
+    // useEffect(() => {
+    //     const userInfo = getStorageValues('userInfo');
+    //     if(userInfo){
+    //         dispatch({
+    //             type: ADD_INFO,
+    //             payload: userInfo
+    //         })
+    //     }
 
-        setLoading(false);
-    }, []);
+    //     setLoading(false);
+    // }, []);
+
+    // return (
+    //     <StateContext.Provider value={state}>
+    //         <DispatchContext.Provider value={dispatch}>
+    //             { loading ? null : children }
+    //         </DispatchContext.Provider>
+    //     </StateContext.Provider>
+    // );
 
     return (
         <StateContext.Provider value={state}>
             <DispatchContext.Provider value={dispatch}>
-                { loading ? null : children }
+                { children }
             </DispatchContext.Provider>
         </StateContext.Provider>
     );

@@ -7,6 +7,8 @@ import {
     REMOVE_FROM_CART,
     RESTORE_CART
 } from './types/cart';
+// request
+import cartRequests from '../requests/cart';
 
 const StateContext = createContext();
 const DispatchContext = createContext();
@@ -27,15 +29,7 @@ const CartHOC = ({ children }) => {
 
 // custom hooks
 const useCart = () => {
-    const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
-
-    // TODO: check if the state can be modified, like
-    // let myState = getCartItems(); myState.something = 123;
-    // I think react is prepare to not allow that 
-    function getCartItems(){
-        return state;
-    }
 
     function addCartItem(itemId, item, quantity){
         dispatch({
@@ -51,6 +45,7 @@ const useCart = () => {
         })
     }
 
+    // restore cart when user reload the page
     function restoreCart(cartItems){
 
         const parsedItems = {};
@@ -68,16 +63,37 @@ const useCart = () => {
         })
     }
 
+    // get items from DB
+    async function getCartItemsForDB(userId) {
+        if(userId){
+            try {
+                const items = await cartRequests.getUserCartItems(userId);
+                // restore cart
+                if(items?.length) restoreCart(items);
+    
+            } catch ({message}) {
+                console.error("[error getting cart from DB] " + message);
+            }
+        }
+    }
+
     return {
-        getCartItems,
         addCartItem,
         removeCartItem,
-        restoreCart
+        restoreCart,
+        getCartItemsForDB
     }
+}
+
+
+const useCartInfo = () => {
+    const state = useContext(StateContext);
+    return state;
 }
 
  
 export default CartHOC;
 export {
-    useCart
+    useCart,
+    useCartInfo
 }

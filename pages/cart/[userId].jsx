@@ -1,6 +1,9 @@
 import React from 'react';
 import cartRequests from '../../requests/cart';
+// components
 import AppLayout from '../../components/Layouts/appLayout';
+import ItemList from '../../components/Cart/itemListContainer';
+
 
 export const getServerSideProps = async ({ params: { userId }, query: { token } }) => {
     const items = await cartRequests.getUserCartItems(userId, token);
@@ -13,12 +16,9 @@ export const getServerSideProps = async ({ params: { userId }, query: { token } 
 }
 
 const CartPage = ({ items }) => {
-
-    console.log("items ", items);
-
     return (
         <AppLayout>
-            <h1>hola</h1>
+            <ItemList items={items} />
         </AppLayout>
     );
 }

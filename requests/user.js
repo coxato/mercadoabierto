@@ -10,4 +10,9 @@ userRequests.getInfoLogged = async function(){
     return basicUserData; 
 }
 
+userRequests.getUserMoney = async function(id_user){
+    const money = await request.get(`${BASE_URL}/users/money/${id_user}`, { token: true });
+    return money; 
+}
+
 export default userRequests;

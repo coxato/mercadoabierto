@@ -1,7 +1,8 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 
-const AddToCartButtonComponent = ({avaliableQty, handleChange, value, handleClick, loading}) => {
+const AddToCartButtonComponent = ({avaliableQty, handleChange, value, handleClick, loading, canBuy}) => {
+
     return (
         <div className="container">
             <Input
@@ -17,11 +18,13 @@ const AddToCartButtonComponent = ({avaliableQty, handleChange, value, handleClic
                 placeholder='Quantity'
                 defaultValue='1'
                 type="number"
-                min="1"
+                min={1}
                 max={avaliableQty}
-                onChange={(_, qty) => handleChange(qty) }
+                onChange={(_, data) => handleChange(parseInt(data.value)) }
                 defaultValue={value}
             />
+            <p><i>{canBuy ? '' : `You don't have enough money to buy ${value} items`}</i></p>
+
             <style jsx>{`
                 .container{
                     padding: 30px 0;
