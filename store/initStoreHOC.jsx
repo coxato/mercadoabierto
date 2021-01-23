@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 // store custom hooks
 import { useUser, useUserInfo } from './user';
 import { useCart } from './cart';
+// components
+// import FullPageLoader from '../components/Loaders/fullPage';
 
 function InitStoreHOC({children}){
     const [loading, setLoading] = useState(true);
@@ -25,7 +27,9 @@ function InitStoreHOC({children}){
 
     return(
         <>
-            {loading ? null : children}
+            {
+                loading ? null : children
+            }
         </>
     );
 

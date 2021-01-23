@@ -1153,6 +1153,13 @@ chalk@4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chico@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/chico/-/chico-2.0.12.tgz#780bb7537a29d3ffb279e185e0f23ed4f8fd3a16"
+  integrity sha512-cCZS1b9v9/T+ht3m3R0yXH8SivPBcVMdq/KdJn4v7eW+UzaV9R7UW3Om5C481rSf2zYmwkfcHN8Kb5teWQUfLA==
+  dependencies:
+    tiny.js "^0.2.1"
+
 chokidar@3.4.3, chokidar@^3.4.1:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.3.tgz#c1df38231448e45ca4ac588e6c79573ba6a57d5b"
@@ -4488,6 +4495,13 @@ timers-browserify@^2.0.4:
   integrity sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ==
   dependencies:
     setimmediate "^1.0.4"
+
+tiny.js@^0.2.1:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/tiny.js/-/tiny.js-0.2.5.tgz#56f04a20f1a5945fb4ed18eb0bd742607c05cfd8"
+  integrity sha512-ZblK46FkYun9SxdxPvepS06Ai8QmwtSnuJCwRktzhpuEqlz1iSTA7fG9iswWexJMAi06ltui+yaNBA7qZqB9jw==
+  dependencies:
+    inherits "^2.0.1"
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

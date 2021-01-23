@@ -24,7 +24,7 @@ const categoriesOptions = [
     {
         key: 'video-games',
         text: 'Videogames',
-        value: 'video-games',
+        value: 'videogames',
         icon: 'gamepad'
     },
     {
@@ -43,13 +43,18 @@ const categoriesOptions = [
 
 const CategoriesNavbar = () => {
 
-    const { pathname } = useRouter();
+    const { pathname, push } = useRouter();
     const [value, setValue] = useState('');
 
     useEffect(() => {
         const actualCategory = /category/.test(pathname) ? pathname.split('/').pop() : '';
         setValue(actualCategory); 
     }, []);
+
+    const handleChange = value => {
+        setValue(value);
+        push(`/category/${value}`);
+    }
 
     return (
         <div className="container">
@@ -59,7 +64,7 @@ const CategoriesNavbar = () => {
                 selection
                 options={categoriesOptions}
                 value={value}
-                onChange={(ev, data) => setValue(data.value)}
+                onChange={(ev, data) => handleChange(data.value)}
             />
 
             <style jsx>{`

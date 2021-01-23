@@ -29,4 +29,24 @@ productRequests.getProductById = async function(id){
 }
 
 
+productRequests.getProductsByCategory = async function({
+    category, 
+    page = 1, 
+    orderBy = 'date', 
+    order = 'DESC', 
+    limit = 20
+}){
+    try {
+        const url = `${BASE_URL}/products/category/${category}?page=${page}&orderBy=${orderBy}&order=${order}&limit=${limit}`;
+        
+        const products = await request.get(url);
+        return products;
+
+    } catch ({message}) {
+        console.error("[error getting products by category]", message);
+        throw new Error(message);
+    }
+}
+
+
 export default productRequests;

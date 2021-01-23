@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    padding: 20px 50px 20px 24px;
+}
+
+.left{
+    margin-right: 25px;
+    background-color: rebeccapurple;
+}
+
+.cover{
+    /* width: 130px; */
+}
+
+.right{
+    
+}
+
+.title{
+    color: #333;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+.price{
+    line-height: 0;
+    font-weight: 900;
+    font-size: 23px;
+}
