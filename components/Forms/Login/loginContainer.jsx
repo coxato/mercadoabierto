@@ -9,6 +9,11 @@ import userRequests from '../../../requests/user';
 
 let redirectTimer;
 
+const welcomeMessage = (firstName) => {
+    const fName = firstName[0].toUpperCase() + firstName.substring(1);
+    return 'Welcome ' + fName + '!';
+}
+
 const LoginContainer = () => {
 
     const router = useRouter();
@@ -40,7 +45,11 @@ const LoginContainer = () => {
             const userBasicData = await userRequests.getInfoLogged();
             
             setLoading(false);
-            setSuccess({ is: true, title: 'Welcome!', text: 'We are redirecting you to the homepage'});
+            setSuccess({ 
+                is: true, 
+                title: welcomeMessage(userBasicData.first_name), 
+                text: 'We are redirecting you to the homepage'
+            });
             
             redirectTimer = setTimeout(() => {
                 saveUserInfo(userBasicData);

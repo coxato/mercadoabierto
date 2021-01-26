@@ -4,7 +4,7 @@ import productRequests from '../../requests/products';
 
 export async function getServerSideProps({ params, query }){
     const category = params.categoryName;
-    const { page, limit, orderBy, order } = query;
+    const { page, limit, orderBy, order, filter, view } = query;
 
     try {
         const response = await productRequests.getProductsByCategory({
@@ -12,7 +12,9 @@ export async function getServerSideProps({ params, query }){
             page,
             limit,
             orderBy,
-            order
+            order,
+            filter,
+            view
         });
 
         if(response.error){

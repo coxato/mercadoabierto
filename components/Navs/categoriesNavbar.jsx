@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'; 
 import { Dropdown } from 'semantic-ui-react';
+import { getCategoryFromPath } from '../../utils/urlUtils';
 
 const categoriesOptions = [
     {
@@ -43,17 +44,17 @@ const categoriesOptions = [
 
 const CategoriesNavbar = () => {
 
-    const { pathname, push } = useRouter();
+    const router = useRouter();
     const [value, setValue] = useState('');
 
     useEffect(() => {
-        const actualCategory = /category/.test(pathname) ? pathname.split('/').pop() : '';
+        const actualCategory = getCategoryFromPath();
         setValue(actualCategory); 
     }, []);
 
     const handleChange = value => {
         setValue(value);
-        push(`/category/${value}`);
+        router.push(`/category/${value}`);
     }
 
     return (

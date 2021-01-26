@@ -5,8 +5,8 @@ import ProductListDesktopMenu from './productListDesktopMenu';
 // context
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 
-const ProductsListMenu = () => {
-    const { isMobile } = useContext(ProductListContext);
+const ProductsListMenu = ({ isMobile = true }) => {
+    // const { isMobile } = useContext(ProductListContext);
     
     if(isMobile) return <ProductListMobileMenu />;
 

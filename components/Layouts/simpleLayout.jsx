@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleHero from '../Heros/simpleHero';
-import s from './simpleLayout.module.css';
+import s from './layoutsStyle/simpleLayout.module.css';
 
 const SimpleLayout = ({ children, heroColor = '' }) => {
     return (

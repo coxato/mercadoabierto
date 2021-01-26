@@ -5,7 +5,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import { useUser } from '../../store/user';
 // components
 import UserLoggedAvatar from './userLoggedAvatar';
-import  CartNavbar from './cartNavbar';
+import CartNavbar from './cartNavbar';
 import CategoriesNavbar from './categoriesNavbar';
 import SearchBar from '../SearchBar/searchBar';
 // style

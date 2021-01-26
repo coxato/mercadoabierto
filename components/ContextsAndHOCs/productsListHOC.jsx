@@ -13,7 +13,7 @@ const paramsEnum = {
 }
 
 function ProductsListHOC({ children, productsData, currentDevice }) {
-    const [productsView, setProductsView] = useState(productsData.view || 'list');
+    const [productsView, _setProductsView] = useState(productsData.view || 'grid');
     const [orderQuery, setOrderQuery] = useState({orderBy: 'date', order: 'DESC'});
     const [currentPage, setCurrentPage] = useState(productsData.currentPage);
     const [ filter, setFilter ] = useState(productsData.filter || '');
@@ -28,7 +28,7 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         switch (type) {
             case 1: setCurrentPage(value); break;
             
-            case 2: setOrderQuery(value); break;
+            case 2: setOrderQuery(JSON.parse(value)); break;
 
             case 3: setFilter(value); break;
         
@@ -45,7 +45,14 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         // router.push(parsedUrl);
     }
 
+    const setProductsView = (view) => {
+        localStorage.setItem("productsView", view);
+        _setProductsView(view);
+    }
+
     useEffect(() => {
+        const view = localStorage.getItem("productsView");
+        if(view) _setProductsView(view);
         setLoading(false);
     }, []);
 

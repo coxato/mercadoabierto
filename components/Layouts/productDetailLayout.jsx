@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './productDetailLayout.module.css';
+import s from './layoutsStyle/productDetailLayout.module.css';
 
 const ProductDetailLayout = ({
     breadcrumbComponent, 

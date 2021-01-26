@@ -44,7 +44,7 @@ const LoginForm = ({
                     <Form.Input  name="password" type="password" onChange={handleChange} placeholder="password" required />
                 </Form.Field>
                 
-                <Button type='submit' primary fluid size='big' loading={loading}>Login!</Button>
+                <Button type='submit' primary fluid size='big' loading={loading} disabled={success.is} >Login!</Button>
                 
                 <div style={{height: '10px'}} />
 

@@ -33,6 +33,7 @@ const SearchBar = () => {
                     type="text" 
                     placeholder="Search tech products"
                     className={s.input}
+                    maxLength={120}
                 />
 
                 <div className={s.lupe} onClick={handleSubmit}>

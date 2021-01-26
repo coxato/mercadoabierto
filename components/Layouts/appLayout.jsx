@@ -3,7 +3,7 @@ import React from 'react';
 import AppNavbar from '../Navs/appNavbar';
 import Footer from '../Footers/footer';
 // style
-import s from './appLayout.module.css';
+import s from './layoutsStyle/appLayout.module.css';
 
 const AppLayout = ({ children }) => {
     return (

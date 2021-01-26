@@ -2,19 +2,34 @@
  * Utils for parse url's
  */
 
+const getCategoryFromPath = (path = null) => {
+    if(!path)path = window.location.pathname; 
+    
+    if(/category/.test(path)){
+       return path.split('/').pop();
+    }
+    return '';
+}
+
+
+const getSearchQuery = () => {
+    const params = new URLSearchParams(window.location.href);
+    const search = params.get("q");
+    return decodeURIComponent(search);
+}
+
+
 const getProductsPathName = () => {
     const pathName = window.location.pathname;
     let path = '';
     // it's category pathname
     if(/\/category\/.+/.test(pathName)){
-        const categ = pathName.split('/').pop(),
-        cleanCategory = categ.split("?")[0];
-        path = `/category/${cleanCategory}/`;
+        const categ = getCategoryFromPath(pathName);
+        path = `/category/${categ}/`;
     }
     // it's search pathname
     else if(/\/search\/.+/.test(pathName)){
-        const params = new URLSearchParams(window.location.href);
-        const search = params.get("q");
+        const search = getSearchQuery();
         path = `/search/?q=${search}`;
     }
 
@@ -35,7 +50,10 @@ const getParsedUrlOfProducts = (queryParamsObj) => {
     return parsedUrl + '?' + params.toString();
 }
 
+
 export { 
     getProductsPathName, 
-    getParsedUrlOfProducts
+    getParsedUrlOfProducts,
+    getCategoryFromPath,
+    getSearchQuery
 }

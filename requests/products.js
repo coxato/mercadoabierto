@@ -31,14 +31,19 @@ productRequests.getProductById = async function(id){
 
 productRequests.getProductsByCategory = async function({
     category, 
+    filter,
+    view,
     page = 1, 
     orderBy = 'date', 
     order = 'DESC', 
-    limit = 20
+    limit = 20,
+
 }){
     try {
-        const url = `${BASE_URL}/products/category/${category}?page=${page}&orderBy=${orderBy}&order=${order}&limit=${limit}`;
-        
+        let url = `${BASE_URL}/products/category/${category}?page=${page}&orderBy=${orderBy}&order=${order}&limit=${limit}`;
+        if(filter) url += `&filter=${filter}`;
+        if(view) url += `&view=${view}`;
+
         const products = await request.get(url);
         return products;
 
