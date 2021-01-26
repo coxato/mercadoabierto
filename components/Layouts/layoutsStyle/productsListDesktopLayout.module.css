@@ -1,0 +1,38 @@
+.desktopContainer{
+    display: flex;
+    width: 100%;
+    padding: 50px 90px 40px 40px;
+    /* background-color: red; */
+}
+
+.left{
+    background-color: var(--light);
+    flex-wrap: wrap;
+    flex: 1 1;
+    max-width: 294px;
+    min-width: 210px;
+    padding-right: 14px;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.leftTop{
+    margin-bottom: 40px;
+}
+
+
+
+.title{
+    color: #333;
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    padding-right: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.right{
+    width: 100%;
+}

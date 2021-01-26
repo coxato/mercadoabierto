@@ -14,11 +14,11 @@ function ProductListLayout({ productsData }) {
     useEffect(() => {
         const width = document.body.clientWidth;
 
-        if( width >= 770 ){
+        if( width >= 801 ){
             setIsMobile(false);
             setCurrentDevice('desktop');
         }
-        else if( width < 770 && width >= 540 ){
+        else if( width < 801 && width >= 540 ){
             setCurrentDevice('tablet');
         }
         else{

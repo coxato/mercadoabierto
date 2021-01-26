@@ -9,60 +9,64 @@ const orderOptions = [
 {
     key: 'date1',
     text: 'Date (newest)',
-    value: "{orderBy: 'date', order: 'DESC'}"
+    value: '{"orderBy":"date","order":"DESC"}'
 },
 {
     key: 'date2',
     text: 'Date (older)',
-    value: "{orderBy: 'date', order: 'ASC'}"
+    value: '{"orderBy":"date","order":"ASC"}'
 },
 {
     key: 'price1',
     text: 'Price (low to high)',
-    value: "{orderBy: 'price', order: 'ASC'}"
+    value: '{"orderBy":"price","order":"ASC"}'
 },
 {
     key: 'price2',
     text: 'Price (high to low)',
-    value: "{orderBy: 'price', order: 'DESC'}"
+    value: '{"orderBy":"price","order":"DESC"}'
 }]
 
 const ProductListDesktopMenu = ({ reload }) => {
-    const { setProductsView, productsView } = useContext(ProductListContext);
+    const { setProductsView, productsView, orderQuery } = useContext(ProductListContext);
 
     return (
         <div className={s.desktopContainer}>
-            <div>
+            <div className={s.separator_d}>
                 <h3>Order by</h3>
                 <Dropdown 
-                    text="Date (newest)" 
+                    defaultValue={JSON.stringify(orderQuery)} 
                     options={orderOptions}
                     onChange={reload} 
                 />
             </div>
 
-            <div>
+            <div className={s.separator_d}>
                 <h3>Products view</h3>
                 <div className={s.viewIconsDesktop}>
                     <Icon 
-                        color={productsView === 'grid' ? 'black' : 'grey'} 
-                        size="big" 
+                        color={productsView === 'grid' ? 'black' : 'grey'}  
                         onClick={() => setProductsView('grid')}
                         name="th large"
+                        size="big"
+                        title="grid view"
                     />
                     <Icon 
                         color={productsView === 'list' ? 'black' : 'grey'} 
-                        size="big" 
                         onClick={() => setProductsView('list')}
                         name="th list"
+                        size="big"
+                        title="list view"
                     />
                 </div>
             </div>
 
-            <div>
+            <div className={s.separator_d}>
                 <h3>Condition</h3>
-                <p>New</p>
-                <p>Used</p>
+                <div className={s.newused_d}>
+                    <p>New</p>
+                    <p>Used</p>
+                </div>
             </div>
         </div>
     );

@@ -12,9 +12,18 @@ const paramsEnum = {
     filter: 3,
 }
 
+// products default order or previously order
+function defaultOrder({ orderBy, order }) {
+    if(orderBy && order){
+        return { orderBy, order }
+    }
+    return {orderBy: 'date', order: 'DESC'};
+}
+
+
 function ProductsListHOC({ children, productsData, currentDevice }) {
     const [productsView, _setProductsView] = useState(productsData.view || 'grid');
-    const [orderQuery, setOrderQuery] = useState({orderBy: 'date', order: 'DESC'});
+    const [orderQuery, setOrderQuery] = useState(defaultOrder(productsData));
     const [currentPage, setCurrentPage] = useState(productsData.currentPage);
     const [ filter, setFilter ] = useState(productsData.filter || '');
     const [ loading, setLoading ] = useState(true);
@@ -56,6 +65,8 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         setLoading(false);
     }, []);
 
+    // TODO: check if is better put this values in a reducer and use customHooks
+    // or just use it like this
     return(
         <ProductListContext.Provider value={{
             currentDevice,
@@ -64,7 +75,8 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
             productsView,
             setProductsView,
             reloadPageWithParams,
-            paramsEnum
+            paramsEnum,
+            orderQuery
         }}>
             { loading ? null : children}
         </ProductListContext.Provider>

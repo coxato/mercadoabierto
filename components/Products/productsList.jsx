@@ -20,7 +20,10 @@ const ProductsList = () => {
             <style jsx>
                 {`
                     .container{
-                        background: #fff;
+                        background: var(--light);
+                        overflow: hidden;
+                        margin-bottom: 10px;
+                        border-radius: 5px;
                     }
                 `}
             </style>

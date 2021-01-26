@@ -27,6 +27,8 @@ const ProductsListTitle = ({ isMobile = true }) => {
                 }
                 .qty{
                     font-size: 14px;
+                    margin: 0;
+                    line-height: 0;
                 }
             `
             }

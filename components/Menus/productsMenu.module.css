@@ -1,0 +1,32 @@
+.desktopContainer h3{
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 6px;
+}
+
+.separator_d{
+    margin-bottom: 35px;
+}
+
+.viewIconsDesktop i{
+    cursor: pointer;
+    margin-right: 10px;
+    transition: .2s;
+}
+
+.viewIconsDesktop i:hover{
+    box-shadow: 0px 0px 2px 0px black;
+}
+
+.newused_d p{
+    margin: 0;
+    margin-bottom: 5px;
+    transition: .1s;
+    cursor: pointer;
+}
+
+.newused_d p:hover{
+    color: var(--blue);
+}
