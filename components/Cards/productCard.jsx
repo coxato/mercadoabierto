@@ -21,6 +21,8 @@ const ProductCard = (props) => {
             <Card.Content extra />
             
             <Card.Content>
+                <h2 className="price">USD$ {price}</h2>
+                
                 <Link href={`/product/${id_product}`}>
                     <a>    
                         <h2 className="title">
@@ -28,8 +30,6 @@ const ProductCard = (props) => {
                         </h2>
                     </a>
                 </Link>
-                
-                <h2 className="price">USD$ {price}</h2>
                 
                 <Card.Meta>
                     <span>{parseInt(isNew) ? 'New' : 'Used'}</span>

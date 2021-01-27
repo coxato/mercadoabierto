@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 // utils
 import { getParsedUrlOfProducts } from '../../utils/urlUtils';
@@ -27,12 +27,14 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
     const [currentPage, setCurrentPage] = useState(productsData.currentPage);
     const [ filter, setFilter ] = useState(productsData.filter || '');
     const [ loading, setLoading ] = useState(true);
+    const firstTimeRender = useRef(true);
 
     const router = useRouter();
 
     const isMobile = !(currentDevice === 'desktop');
 
-    // handlers
+    // ======= handlers =======
+
     const reloadPageWithParams = (type, value) => {
         switch (type) {
             case 1: setCurrentPage(value); break;
@@ -43,15 +45,16 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         
             default: return;
         }
+    }
 
+    const reloadPage = () => {
         const parsedUrl = getParsedUrlOfProducts({
             page: currentPage,
             view: productsView,
             filter,
             ...orderQuery
         });
-        console.log('parsedUrl ', parsedUrl);
-        // router.push(parsedUrl);
+        router.push(parsedUrl);
     }
 
     const setProductsView = (view) => {
@@ -59,11 +62,24 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         _setProductsView(view);
     }
 
+    // ======= effects =======
+
+    // check when the values change
+    useEffect(() => {
+        if(!firstTimeRender.current){
+            reloadPage();
+        }
+    }, [currentPage, orderQuery, filter]);
+
+    // componentDidMount
     useEffect(() => {
         const view = localStorage.getItem("productsView");
         if(view) _setProductsView(view);
         setLoading(false);
+        firstTimeRender.current = false;
     }, []);
+
+    // ======= render =======
 
     // TODO: check if is better put this values in a reducer and use customHooks
     // or just use it like this
@@ -76,7 +92,8 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
             setProductsView,
             reloadPageWithParams,
             paramsEnum,
-            orderQuery
+            orderQuery,
+            filter
         }}>
             { loading ? null : children}
         </ProductListContext.Provider>

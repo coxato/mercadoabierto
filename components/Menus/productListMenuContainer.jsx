@@ -6,11 +6,31 @@ import ProductListDesktopMenu from './productListDesktopMenu';
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 
 const ProductsListMenu = ({ isMobile = true }) => {
-    // const { isMobile } = useContext(ProductListContext);
+    const { reloadPageWithParams, paramsEnum } = useContext(ProductListContext);
     
-    if(isMobile) return <ProductListMobileMenu />;
+    // order by date or price
+    const handleReloadWithOrder = (_, data) => {
+        reloadPageWithParams(paramsEnum.orderQuery, data.value);
+    }
 
-    return <ProductListDesktopMenu />;
+    // reload new or used, also reset condition if condition === ''
+    const handleReloadProductsCondition = condition => {
+        reloadPageWithParams(paramsEnum.filter, condition);
+    }
+    
+    if(isMobile) return (
+        <ProductListMobileMenu 
+            reloadWithOrder={handleReloadWithOrder}
+            reloadProductsCondition={handleReloadProductsCondition} 
+        />
+    );
+
+    return (
+        <ProductListDesktopMenu 
+            reloadWithOrder={handleReloadWithOrder}
+            reloadProductsCondition={handleReloadProductsCondition} 
+        />
+    );
 }
  
 export default ProductsListMenu;

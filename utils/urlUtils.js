@@ -39,7 +39,7 @@ const getProductsPathName = () => {
 
 const getParsedUrlOfProducts = (queryParamsObj) => {
     let parsedUrl = getProductsPathName();
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams();
 
     for(let [key, value] of Object.entries(queryParamsObj)){
         if(value){
