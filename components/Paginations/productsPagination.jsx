@@ -21,11 +21,21 @@ const ProductsPagination = () => {
                 totalPages > 0 && (
                     <Pagination
                         onPageChange={handlePageChange}
-                        defaultActivePage={currentPage}
+                        activePage={currentPage}
                         totalPages={totalPages}
+                        firstItem={null}
+                        lastItem={null}
                     />
                 )
             }
+            <style jsx>{`
+                .container{
+                    margin-top: 20px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+            `}</style>
         </div>
     );
 }

@@ -39,9 +39,21 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         switch (type) {
             case 1: setCurrentPage(value); break;
             
-            case 2: setOrderQuery(JSON.parse(value)); break;
+            case 2: {
+                setOrderQuery(() => {
+                    setCurrentPage(1);
+                    return JSON.parse(value);
+                }); 
+                break;
+            }
 
-            case 3: setFilter(value); break;
+            case 3: {
+                setFilter(() => {
+                    setCurrentPage(1);
+                    return value;
+                }); 
+                break;
+            }
         
             default: return;
         }
