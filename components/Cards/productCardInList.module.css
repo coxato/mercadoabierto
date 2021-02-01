@@ -5,7 +5,7 @@
 
 .left{
     margin-right: 25px;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
 }
 
 .cover{
@@ -27,4 +27,11 @@
     line-height: 0;
     font-weight: 900;
     font-size: 23px;
+}
+
+@media screen and (max-width: 500px){
+    .left{
+        min-width: 145px;
+        max-width: 145px;
+    }
 }

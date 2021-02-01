@@ -7,20 +7,18 @@ const ProductsPagination = () => {
     
     const {
         productsData: { currentPage, totalPages },
-        reloadPageWithParams,
+        reloadWithPagination,
         paramsEnum
     } = useContext(ProductListContext);
-
-    const handlePageChange = (ev, dataObj) => {
-        reloadPageWithParams(paramsEnum.page, dataObj.activePage);
-    }
 
     return (
         <div className="container">
             {
                 totalPages > 0 && (
                     <Pagination
-                        onPageChange={handlePageChange}
+                        onPageChange={
+                            (_, { activePage }) => reloadWithPagination(activePage)
+                        }
                         activePage={currentPage}
                         totalPages={totalPages}
                         firstItem={null}

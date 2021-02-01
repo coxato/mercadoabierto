@@ -37,7 +37,7 @@ export async function getServerSideProps({ params, query }){
 }
 
 const CategoryPage = ({productsData}) => {
-    return <ProductsListLayout productsData={productsData} />
+    return <ProductsListLayout productsData={productsData}/>
 }
  
 export default CategoryPage;

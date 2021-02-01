@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { orderOptions } from '../../utils/constants';
 // components
 import { Icon, Dropdown } from 'semantic-ui-react';
 import FilterTags from '../Tags/tagsWithDeleteButton';
@@ -7,34 +8,15 @@ import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 // style
 import s from './productsMenu.module.css';
 
-const orderOptions = [
-{
-    key: 'date1',
-    text: 'Date (newest)',
-    value: '{"orderBy":"date","order":"DESC"}'
-},
-{
-    key: 'date2',
-    text: 'Date (older)',
-    value: '{"orderBy":"date","order":"ASC"}'
-},
-{
-    key: 'price1',
-    text: 'Price (low to high)',
-    value: '{"orderBy":"price","order":"ASC"}'
-},
-{
-    key: 'price2',
-    text: 'Price (high to low)',
-    value: '{"orderBy":"price","order":"DESC"}'
-}]
 
-const ProductListDesktopMenu = ({ reloadWithOrder, reloadProductsCondition }) => {
+const ProductListDesktopMenu = () => {
     const { 
         setProductsView, 
         productsView, 
         orderQuery,
-        filter 
+        filter,
+        reloadProductsCondition,
+        reloadWithOrder,
     } = useContext(ProductListContext);
 
     return (

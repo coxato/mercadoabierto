@@ -16,7 +16,10 @@ import InitStoreHOC from '../store/initStoreHOC';
 
 //Binding router events to nprogress. 
 router.events.on('routeChangeStart', () => NProgress.start()); 
-router.events.on('routeChangeComplete', () => NProgress.done()); 
+router.events.on('routeChangeComplete', () => {
+    window.scrollTo(0, 0); 
+    NProgress.done();
+}) 
 router.events.on('routeChangeError', () => NProgress.done());
 
 

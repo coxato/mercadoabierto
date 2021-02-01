@@ -1,3 +1,5 @@
+/* ================== desktop ===================== */
+
 .desktopContainer h3{
     color: #333;
     font-size: 16px;
@@ -29,4 +31,32 @@
 
 .newused_d p:hover{
     color: var(--blue);
+}
+
+
+/* ===================== mobile ======================== */
+
+.mobileContainer{
+    display: flex;
+    width: 100%;
+    background: #fff;
+    padding: 10px 20px;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 2px solid #e8e8e8;
+}
+
+.menuItemMobile{
+    padding: 8px 0px;
+    color: var(--blue);
+}
+
+.menuItemMobile i{
+    margin-right: 6px;
+}
+
+.divider_m{
+    width: 1px;
+    height: 20px;
+    background-color: #dadada;
 }

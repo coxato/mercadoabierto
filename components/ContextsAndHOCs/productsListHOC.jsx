@@ -59,6 +59,21 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         }
     }
 
+    // reload products order by date or price
+    const reloadWithOrder = (_, data) => {
+        reloadPageWithParams(paramsEnum.orderQuery, data.value);
+    }
+
+    // reload page with new or used, also reset condition if condition === ''
+    const reloadProductsCondition = condition => {
+        reloadPageWithParams(paramsEnum.filter, condition);
+    }
+
+    // reload page with pagination
+    const reloadWithPagination = (newPage) => {
+        reloadPageWithParams(paramsEnum.page, newPage);
+    }
+
     const reloadPage = () => {
         const parsedUrl = getParsedUrlOfProducts({
             page: currentPage,
@@ -102,8 +117,9 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
             productsData,
             productsView,
             setProductsView,
-            reloadPageWithParams,
-            paramsEnum,
+            reloadProductsCondition,
+            reloadWithOrder,
+            reloadWithPagination,
             orderQuery,
             filter
         }}>

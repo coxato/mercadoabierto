@@ -28,6 +28,7 @@ const ProductGridView = ({ products }) => {
                 .column-item{
                     display: flex;
                     justify-content: center;
+                    padding: 14px 16px;
                 }
             `}</style>
         </Grid>

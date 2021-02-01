@@ -1,64 +1,47 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Icon, Dropdown } from 'semantic-ui-react';
+import React, { useState, useContext } from 'react';
+import { Icon } from 'semantic-ui-react';
 // context
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
+// modals
+import { MobileFilterMenu, MobileOrderMenu } from './mobileModalsMenu';
 // style
 import s from './productsMenu.module.css';
 
-const orderOptions = [
-{
-    key: 'date1',
-    text: 'Date (newest)',
-    value: '{"orderBy":"date","order":"DESC"}'
-},
-{
-    key: 'date2',
-    text: 'Date (older)',
-    value: '{"orderBy":"date","order":"ASC"}'
-},
-{
-    key: 'price1',
-    text: 'Price (low to high)',
-    value: '{"orderBy":"price","order":"ASC"}'
-},
-{
-    key: 'price2',
-    text: 'Price (high to low)',
-    value: '{"orderBy":"price","order":"DESC"}'
-}]
-
-const ProductListMobileMenu = ({ reload }) => {
+const ProductListMobileMenu = () => {
     const { setProductsView, productsView } = useContext(ProductListContext);
+    const [showOrderModal, setShowOrderModal] = useState(false);
+    const [showFilterModal, setShowFilterModal] = useState(false);
 
+    // handlers
+    const handleView = () => {
+        setProductsView(productsView === 'list' ? 'grid' : 'list');
+    }
+
+    // render
     return (
         <div className={s.mobileContainer}>
-            <div>
-                <h3>Order by</h3>
-                <Dropdown text="Date (newest)" options={orderOptions} />
+
+            <MobileOrderMenu open={showOrderModal} setOpen={setShowOrderModal} />
+
+            <MobileFilterMenu open={showFilterModal} setOpen={setShowFilterModal} />
+
+            <div className={s.menuItemMobile} onClick={() => setShowOrderModal(true)}>
+                <Icon color="blue" name="exchange" style={{transform: 'rotateZ(90deg)'}} />
+                Order
             </div>
 
-            <div>
-                <h3>Products view</h3>
-                <div className={s.viewIconsDesktop}>
-                    <Icon 
-                        color={productsView === 'grid' ? 'black' : 'grey'} 
-                        size="small" 
-                        onClick={() => setProductsView('grid')}
-                        name="th large"
-                    />
-                    <Icon 
-                        color={productsView === 'list' ? 'black' : 'grey'} 
-                        size="small" 
-                        onClick={() => setProductsView('list')}
-                        name="th list"
-                    />
-                </div>
+            <div className={s.divider_m} />
+
+            <div className={s.menuItemMobile} onClick={handleView}>
+                <Icon color="blue" name={productsView === 'list' ? 'square full' : 'list'} />
+                {productsView === 'list' ? 'Gallery' : 'List'}
             </div>
 
-            <div>
-                <h3>Condition</h3>
-                <p>New</p>
-                <p>Used</p>
+            <div className={s.divider_m} />
+
+            <div className={s.menuItemMobile} onClick={() => setShowFilterModal(true)} >
+                <Icon color="blue" name="filter" />
+                Filter
             </div>
         </div>
     );

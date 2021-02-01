@@ -9,7 +9,7 @@ const ProductCard = (props) => {
     const { title, id_product, cover, price, 'new': isNew } = props;
 
     return(
-        <Card>
+        <Card fluid>
             <Card.Content extra />
 
             <Link href={`/product/${id_product}`}>

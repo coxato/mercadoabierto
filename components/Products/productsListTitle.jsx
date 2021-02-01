@@ -12,7 +12,7 @@ const ProductsListTitle = ({ isMobile = true }) => {
     return (
         <div>
             <h1 className="title">{
-                cardTitle(getCategoryFromPath() || getSearchQuery(), 120)
+                cardTitle(getCategoryFromPath() || getSearchQuery(), isMobile ? 40 : 100)
             }</h1>
 
             <h3 className="qty">{totalItems} {'result' + (totalItems === 1 ? '' : 's')}</h3>
