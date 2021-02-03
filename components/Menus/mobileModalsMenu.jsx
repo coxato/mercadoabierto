@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Modal, Icon, Header, List } from 'semantic-ui-react';
 import { orderOptions } from '../../utils/constants';
+import { areEqualSimple } from '../../utils/areEqual';
 // context
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 // style
@@ -47,7 +48,9 @@ function MobileFilterMenu({ open, setOpen }) {
                     {
                         filter && (
                             <p>
-                                You have selected {filter}, <u onClick={() => reloadProductsCondition('')}>remove</u> 
+                                You have selected {filter},
+                                {' '}
+                                <u onClick={() => reloadProductsCondition('')}>remove</u> 
                             </p>
                         )
                     }
@@ -59,14 +62,32 @@ function MobileFilterMenu({ open, setOpen }) {
 
 
 function MobileOrderMenu({ open, setOpen }) {
-    const { reloadWithOrder } = useContext(ProductListContext);
+    const { reloadWithOrder, orderQuery } = useContext(ProductListContext);
 
     return (
         <MenuModal {...{open, setOpen}}>
             <Header as="h1" content="Order By" />
-            <div onClick={() => setOpen(false)}>
+            <div className={s.orderOptions}>{
+                orderOptions.map( (opt, idx) => {
+                    let optParsed = JSON.parse(opt.value);
+                    let isSelected = areEqualSimple(optParsed, orderQuery);
 
-            </div>
+                    return(
+                        <div onClick={
+                            () => {
+                                setOpen(false);
+                                reloadWithOrder(opt.value);
+                            }
+                            } 
+                            className={`${s.orderOption} ${isSelected ? s.orderActive : ''}`} 
+                            key={idx}
+                        >
+                            <div className={s.optBorder} />
+                            <p className={s.optText}>{opt.text}</p>
+                        </div>
+                    )
+                })
+            }</div>
         </MenuModal>
     )
 }

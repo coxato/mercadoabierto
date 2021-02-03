@@ -20,7 +20,6 @@ const ProductListMobileMenu = () => {
     // render
     return (
         <div className={s.mobileContainer}>
-
             <MobileOrderMenu open={showOrderModal} setOpen={setShowOrderModal} />
 
             <MobileFilterMenu open={showFilterModal} setOpen={setShowFilterModal} />

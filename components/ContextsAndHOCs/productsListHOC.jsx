@@ -35,6 +35,7 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
 
     // ======= handlers =======
 
+    // this function affect the state and useEffect is called
     const reloadPageWithParams = (type, value) => {
         switch (type) {
             case 1: setCurrentPage(value); break;
@@ -59,9 +60,8 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         }
     }
 
-    // reload products order by date or price
-    const reloadWithOrder = (_, data) => {
-        reloadPageWithParams(paramsEnum.orderQuery, data.value);
+    const reloadWithOrder = (orderStr) => {
+        reloadPageWithParams(paramsEnum.orderQuery, orderStr);
     }
 
     // reload page with new or used, also reset condition if condition === ''
@@ -69,7 +69,6 @@ function ProductsListHOC({ children, productsData, currentDevice }) {
         reloadPageWithParams(paramsEnum.filter, condition);
     }
 
-    // reload page with pagination
     const reloadWithPagination = (newPage) => {
         reloadPageWithParams(paramsEnum.page, newPage);
     }

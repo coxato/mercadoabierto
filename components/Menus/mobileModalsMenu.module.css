@@ -1,3 +1,36 @@
 .modalContainer{
-    padding: 10px;
+    padding: 10px 0;
+}
+
+.orderOptions{
+    width: 100%;
+    margin-top: 25px;
+}
+
+.orderOption{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.optBorder{
+    height: 25px;
+    width: 4px;
+    background-color: transparent;
+}
+
+
+.optText{
+    margin-left: 15px;
+    font-size: 16px;
+    color: var(--black);
+    padding: 5px 0;
+}
+
+.orderActive .optText{
+    font-weight: bolder;
+}
+
+.orderActive .optBorder {
+    background-color: var(--blue);
 }

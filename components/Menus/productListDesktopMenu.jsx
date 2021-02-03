@@ -38,7 +38,7 @@ const ProductListDesktopMenu = () => {
                 <Dropdown 
                     defaultValue={JSON.stringify(orderQuery)} 
                     options={orderOptions}
-                    onChange={reloadWithOrder} 
+                    onChange={(_, data) => reloadWithOrder(data.value)} 
                 />
             </div>
 

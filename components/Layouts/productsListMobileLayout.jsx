@@ -3,6 +3,7 @@ import React from 'react';
 import AppLayout from '../Layouts/appLayout';
 import ProductsListTitle from '../Products/productsListTitle';
 import ProductsList from '../Products/productsList';
+import TagsMobile from '../Tags/tagsSelectedMobile';
 import Menu from '../Menus/productListMenuContainer';
 import Pagination from '../Paginations/productsPagination';
 // style
@@ -19,6 +20,10 @@ const ProductListMobileLayout = () => {
 
                 <div className={s.productsTitle}>
                     <ProductsListTitle isMobile />
+                </div>
+
+                <div className={s.tags}>
+                    <TagsMobile />
                 </div>
 
                 <div className={s.bottomContainer}>
