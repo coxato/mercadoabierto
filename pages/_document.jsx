@@ -5,10 +5,8 @@ class MyExtendedDocument extends Document{
         return(
             <Html>
                 <Head>
-                    {/* favicon */}
-                    {/* fonts */}
-                    {/* stylesheets */}
-                    {/* some js scripts */}
+                <link rel="stylesheet" href="/css/autocomplete.css" />
+
                 </Head>
                 <body className="my-super-custom-css-class">
                     <Main />

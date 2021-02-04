@@ -17,8 +17,8 @@
     "url": "https://github.com/carlosEdua/mercadoabierto.git"
   },
   "dependencies": {
+    "@tarekraafat/autocomplete.js": "^8.3.0",
     "axios": "^0.21.0",
-    "chico": "^2.0.12",
     "firebase": "^8.1.1",
     "nanoid": "^3.1.20",
     "next": "^10.0.3",

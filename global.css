@@ -37,3 +37,35 @@ i.icon.icon-no-margin{
 .carousel{
     margin: auto;
 }
+
+/* autoComplete.js owerwite */
+.autoComplete_wrapper{
+    width: 100%;
+}
+
+.autoComplete_result{
+    color: var(--black);
+    transition: none;
+    padding: 8px;
+    margin: 0;
+    border-radius: 0;
+}
+
+.autoComplete_result:hover{
+    background-color: var(--blue);
+    color: var(--light);
+}
+
+.autoComplete_result:hover span.autoComplete_highlighted{
+    color: #fff;
+}
+
+span.autoComplete_highlighted{
+	color: black;
+}
+
+#autoComplete_list{
+    margin-top: 0;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 0;
+}

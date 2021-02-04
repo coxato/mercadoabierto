@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Icon } from 'semantic-ui-react';
+// autocomplete
+import autoCompleteInit from './autoCompleteLogic';
 // style
 import s from './searchBar.module.css';
 
@@ -22,22 +24,29 @@ const SearchBar = () => {
         const { search } = query;
         // console.log("the search query is", search);
         if(search) setValue(search);
+
+        autoCompleteInit( selectedValue => {
+            setValue(selectedValue);
+        });
     }, []);
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className={s.container}>
-                <input 
-                    onChange={handleChange} 
-                    value={value} 
-                    type="text" 
-                    placeholder="Search tech products"
-                    className={s.input}
-                    maxLength={120}
-                />
+            <div className="autoComplete_wrapper">
+                <div className={s.container}>
+                    <input 
+                        onChange={handleChange} 
+                        value={value} 
+                        type="text" 
+                        placeholder="Search tech products"
+                        className={s.input}
+                        maxLength={120}
+                        id="autoComplete-search"
+                    />
 
-                <div className={s.lupe} onClick={handleSubmit}>
-                    <Icon name="search" className="icon-no-margin" />
+                    <div className={s.lupe} onClick={handleSubmit}>
+                        <Icon name="search" className="icon-no-margin" />
+                    </div>
                 </div>
             </div>
         </form>

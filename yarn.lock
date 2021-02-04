@@ -463,6 +463,11 @@
     exenv "^1.2.2"
     prop-types "^15.6.2"
 
+"@tarekraafat/autocomplete.js@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@tarekraafat/autocomplete.js/-/autocomplete.js-8.3.0.tgz#7ae4b189d51a11c91f54b1de3eab8e8e0cd3f168"
+  integrity sha512-srQh5VZRivqj0g60sYyoq8d4rz2pEs+4paGYPNZttevVHyr+NWuSFwDja52SXoAkXJf1wAggnoguVqu5lU/Dyw==
+
 "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
@@ -1152,13 +1157,6 @@ chalk@4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
-
-chico@^2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/chico/-/chico-2.0.12.tgz#780bb7537a29d3ffb279e185e0f23ed4f8fd3a16"
-  integrity sha512-cCZS1b9v9/T+ht3m3R0yXH8SivPBcVMdq/KdJn4v7eW+UzaV9R7UW3Om5C481rSf2zYmwkfcHN8Kb5teWQUfLA==
-  dependencies:
-    tiny.js "^0.2.1"
 
 chokidar@3.4.3, chokidar@^3.4.1:
   version "3.4.3"
@@ -4495,13 +4493,6 @@ timers-browserify@^2.0.4:
   integrity sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ==
   dependencies:
     setimmediate "^1.0.4"
-
-tiny.js@^0.2.1:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/tiny.js/-/tiny.js-0.2.5.tgz#56f04a20f1a5945fb4ed18eb0bd742607c05cfd8"
-  integrity sha512-ZblK46FkYun9SxdxPvepS06Ai8QmwtSnuJCwRktzhpuEqlz1iSTA7fG9iswWexJMAi06ltui+yaNBA7qZqB9jw==
-  dependencies:
-    inherits "^2.0.1"
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
