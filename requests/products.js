@@ -1,9 +1,20 @@
 import request from './request';
 import config from '../config';
+import objUtils from '../utils/objects';
 
 const BASE_URL = config.api.baseUrl;
 
 const productRequests = {};
+
+// like an TypeScript interface
+const searchProductsProps = {
+    filter: '',
+    view: '',
+    page: 1, 
+    orderBy: 'date', 
+    order: 'DESC', 
+    limit: 20,
+}
 
 productRequests.saveProduct = async function(productData){
     try {
@@ -28,19 +39,17 @@ productRequests.getProductById = async function(id){
     }
 }
 
+async function _getProducts(searchType, value, options) {
+    // get only truthy values
+    const { filter, view, page, orderBy, order, limit } = objUtils.mix(options, searchProductsProps);
 
-productRequests.getProductsByCategory = async function({
-    category, 
-    filter,
-    view,
-    page = 1, 
-    orderBy = 'date', 
-    order = 'DESC', 
-    limit = 20,
-
-}){
     try {
-        let url = `${BASE_URL}/products/category/${category}?page=${page}&orderBy=${orderBy}&order=${order}&limit=${limit}`;
+        let endPointName;
+        if(searchType === 'category') endPointName = `category/${value}?`;
+        else endPointName = `search?search=${value}&`;
+
+        let url = `${BASE_URL}/products/${endPointName}page=${page}&orderBy=${orderBy}&order=${order}&limit=${limit}`;
+        
         if(filter) url += `&filter=${filter}`;
         if(view) url += `&view=${view}`;
 
@@ -48,9 +57,24 @@ productRequests.getProductsByCategory = async function({
         return products;
 
     } catch ({message}) {
-        console.error("[error getting products by category]", message);
+        console.error(
+            `[error getting products by ${searchType}]`,
+            message
+        );
         throw new Error(message);
     }
+
+}
+
+
+productRequests.getProductsByCategory = async function(category, options = searchProductsProps){
+    const products = await _getProducts('category', category, options);
+    return products;
+}
+
+productRequests.getProductsByInputSearch = async function(searchStr, options = searchProductsProps) {
+    const products = await _getProducts('search', searchStr, options);
+    return products;
 }
 
 

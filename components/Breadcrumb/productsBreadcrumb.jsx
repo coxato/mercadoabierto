@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Breadcrumb } from 'semantic-ui-react';
+import { cardTitle } from '../../utils/textUtils';
 
-const ProductsBreadcrumb = ({ category, title = '' }) => {
+
+const ProductsBreadcrumb = ({ category = '', title = '' }) => {
     return (
         <div className="container">
             <Breadcrumb>
@@ -10,11 +12,17 @@ const ProductsBreadcrumb = ({ category, title = '' }) => {
                     <Link href="/"><a>Home</a></Link>
                 </Breadcrumb.Section>
 
-                <Breadcrumb.Divider icon='right angle' />
+                {
+                    category && (
+                        <>
+                            <Breadcrumb.Divider icon='right angle' />
 
-                <Breadcrumb.Section active={!title}>
-                    <Link href={`/category/${category}`}><a>{category}</a></Link>
-                </Breadcrumb.Section>
+                            <Breadcrumb.Section active={!title}>
+                                <Link href={`/category/${category}`}><a>{category}</a></Link>
+                            </Breadcrumb.Section>
+                        </>
+                    )
+                }
 
                 {
                     title && (
@@ -22,7 +30,7 @@ const ProductsBreadcrumb = ({ category, title = '' }) => {
                         <Breadcrumb.Divider icon='right angle' />
 
                         <Breadcrumb.Section active>
-                            { title.length >= 25 ? `${title.substring(0, 25)}...` : title }
+                            { cardTitle(title, 25) }
                         </Breadcrumb.Section>
                     </>)
                 }

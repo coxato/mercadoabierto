@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Card } from 'semantic-ui-react'
 // utils
-import { cardTitle } from '../../utils/textUtils';
+import { cutText } from '../../utils/textUtils';
 
 const ProductCard = (props) => {
 
@@ -26,7 +26,7 @@ const ProductCard = (props) => {
                 <Link href={`/product/${id_product}`}>
                     <a>    
                         <h2 className="title">
-                            {cardTitle(title)}
+                            {cutText(title)}
                         </h2>
                     </a>
                 </Link>

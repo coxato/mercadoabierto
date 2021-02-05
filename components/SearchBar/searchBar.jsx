@@ -36,6 +36,7 @@ const SearchBar = () => {
                 <div className={s.container}>
                     <input 
                         onChange={handleChange} 
+                        autoComplete="off"
                         value={value} 
                         type="text" 
                         placeholder="Search tech products"

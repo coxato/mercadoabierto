@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // utils
 import { getCategoryFromPath, getSearchQuery } from '../../utils/urlUtils';
-import { cardTitle } from '../../utils/textUtils';
+import { cutText } from '../../utils/textUtils';
 // context
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 
@@ -12,7 +12,7 @@ const ProductsListTitle = ({ isMobile = true }) => {
     return (
         <div>
             <h1 className="title">{
-                cardTitle(getCategoryFromPath() || getSearchQuery(), isMobile ? 40 : 100)
+                cutText(getCategoryFromPath() || getSearchQuery(), isMobile ? 40 : 100)
             }</h1>
 
             <h3 className="qty">{totalItems} {'result' + (totalItems === 1 ? '' : 's')}</h3>

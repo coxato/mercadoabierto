@@ -1,4 +1,6 @@
 import autoComplete from '@tarekraafat/autocomplete.js/dist/js/autoComplete';
+import productRequests from '../../requests/products';
+
 
 function initAutoComplete(selectionCallback) {
     new autoComplete({

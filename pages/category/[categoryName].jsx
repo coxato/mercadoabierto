@@ -4,18 +4,9 @@ import productRequests from '../../requests/products';
 
 export async function getServerSideProps({ params, query }){
     const category = params.categoryName;
-    const { page, limit, orderBy, order, filter, view } = query;
 
     try {
-        const response = await productRequests.getProductsByCategory({
-            category,
-            page,
-            limit,
-            orderBy,
-            order,
-            filter,
-            view
-        });
+        const response = await productRequests.getProductsByCategory(category, query);
 
         if(response.error){
             return {

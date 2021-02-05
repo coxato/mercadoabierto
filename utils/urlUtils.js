@@ -13,9 +13,8 @@ const getCategoryFromPath = (path = null) => {
 
 
 const getSearchQuery = () => {
-    const params = new URLSearchParams(window.location.href);
-    const search = params.get("q");
-    return decodeURIComponent(search);
+    const searchURI = window.location.pathname.split('/').pop();
+    return decodeURIComponent(searchURI);
 }
 
 
@@ -24,13 +23,13 @@ const getProductsPathName = () => {
     let path = '';
     // it's category pathname
     if(/\/category\/.+/.test(pathName)){
-        const categ = getCategoryFromPath(pathName);
-        path = `/category/${categ}/`;
+        const categoryName = getCategoryFromPath(pathName);
+        path = `/category/${categoryName}/`;
     }
     // it's search pathname
     else if(/\/search\/.+/.test(pathName)){
         const search = getSearchQuery();
-        path = `/search/?q=${search}`;
+        path = `/search/${search}`;
     }
 
     return path;
