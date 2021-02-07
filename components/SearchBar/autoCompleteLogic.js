@@ -1,6 +1,8 @@
 import autoComplete from '@tarekraafat/autocomplete.js/dist/js/autoComplete';
+// requests
 import productRequests from '../../requests/products';
 
+const maxResults = 6;
 
 function initAutoComplete(selectionCallback) {
     new autoComplete({
@@ -8,20 +10,25 @@ function initAutoComplete(selectionCallback) {
         
         data: {
             src: async function () {
-                // Loading placeholder text
-                const data = ['one', 'two', 'three']
+                const text = document.getElementById("autoComplete-search").value;
+
+                const data = await productRequests.searchBarSuggestions(text, maxResults);
+
                 return data;
             },
+
+            Cache: false
         },
         trigger: {
             event: ["input", "focus"]
         },
         searchEngine: "strict",
         highlight: true,
-        maxResults: 6,
+        maxResults,
         onSelection: (feedback) => {
             selectionCallback(feedback.selection.value);
-        }
+        },
+        threshold: 3
         
     }); 
 }

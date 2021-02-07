@@ -77,5 +77,23 @@ productRequests.getProductsByInputSearch = async function(searchStr, options = s
     return products;
 }
 
+// get suggestions while user is writing in searchbar
+
+let timeout; // to perform ajax request
+
+productRequests.searchBarSuggestions = function(searchTxt, maxSuggestions) {
+    return new Promise((resolve, reject) => {
+        clearTimeout(timeout);
+        
+        const url = `${BASE_URL}/products/search-text-suggestions?search=${searchTxt}&maxSuggestions=${maxSuggestions}`;
+
+        timeout = setTimeout(() => {
+            request.get(url)
+                .then(resolve)
+                .catch( err => reject(err.message));
+        }, 300);
+    });
+}
+
 
 export default productRequests;

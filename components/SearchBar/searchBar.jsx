@@ -3,31 +3,40 @@ import { useRouter } from 'next/router';
 import { Icon } from 'semantic-ui-react';
 // autocomplete
 import autoCompleteInit from './autoCompleteLogic';
+// requests
+// import productRequests from '../../requests/products';
 // style
 import s from './searchBar.module.css';
 
 const SearchBar = () => {
 
-    const { query } = useRouter();
+    const { query, push } = useRouter();
 
-    const [value, setValue] = useState('');
+    const [text, setText] = useState('');
 
-    const handleChange = (ev) => setValue(ev.target.value);
+    const handleChange = (ev) => setText(ev.target.value);
 
+    // submit by Press 'Enter' key or press 'Search' icon
     const handleSubmit = ev => {
-        ev.preventDefault();
-        console.log(value);
-        // onSubmit(value);
+        ev?.preventDefault();
+        if(text.trim().length){
+            push(`/search/${text}`);
+        }
     }
 
-    useEffect(() => {
-        const { search } = query;
-        // console.log("the search query is", search);
-        if(search) setValue(search);
+    // submit by the suggestion
+    const handleSubmitBySuggestion = (selectedSuggestion) => {
+        console.log(selectedSuggestion);
+        push(`/search/${selectedSuggestion}`);
+    }
 
-        autoCompleteInit( selectedValue => {
-            setValue(selectedValue);
-        });
+
+    useEffect(() => {
+        const { searchProductText } = query;
+        // console.log("the search query is", search);
+        if(searchProductText) setText(searchProductText);
+
+        autoCompleteInit(handleSubmitBySuggestion);
     }, []);
 
     return (
@@ -35,9 +44,10 @@ const SearchBar = () => {
             <div className="autoComplete_wrapper">
                 <div className={s.container}>
                     <input 
-                        onChange={handleChange} 
+                        onChange={handleChange}
+                        onKeyUp={ ({key}) => key === 'Enter' && handleSubmit() } 
                         autoComplete="off"
-                        value={value} 
+                        text={text} 
                         type="text" 
                         placeholder="Search tech products"
                         className={s.input}
