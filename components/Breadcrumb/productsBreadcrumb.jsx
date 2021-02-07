@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Breadcrumb } from 'semantic-ui-react';
-import { cardTitle } from '../../utils/textUtils';
+import { cutText } from '../../utils/textUtils';
 
 
 const ProductsBreadcrumb = ({ category = '', title = '' }) => {
@@ -30,7 +30,7 @@ const ProductsBreadcrumb = ({ category = '', title = '' }) => {
                         <Breadcrumb.Divider icon='right angle' />
 
                         <Breadcrumb.Section active>
-                            { cardTitle(title, 25) }
+                            { cutText(title, 25) }
                         </Breadcrumb.Section>
                     </>)
                 }
