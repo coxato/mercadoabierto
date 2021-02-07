@@ -48,7 +48,7 @@ const CartItemList = ({ items, handleShowPay }) => {
                                     
                                     <List.Content>
                                         <List.Header>{title}</List.Header>
-                                        <span>{quantity} x ${price} = {quantity * price}</span>
+                                        <span>{quantity} x ${price} = {parseInt(quantity) * parseInt(price)}</span>
                                     </List.Content>
                                 </List.Item>
                             )

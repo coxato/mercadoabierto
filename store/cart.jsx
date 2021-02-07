@@ -4,8 +4,10 @@ import cartReducer from './reducers/cart';
 // types
 import {
     ADD_TO_CART,
-    REMOVE_FROM_CART,
-    RESTORE_CART
+    RESTORE_CART,
+    QUIT_ONE_QTY,
+    VOID_CART,
+    QUIT_ITEM
 } from './types/cart';
 // request
 import cartRequests from '../requests/cart';
@@ -38,10 +40,23 @@ const useCart = () => {
         })
     }
 
-    function removeCartItem(itemId, quantity){
+    function remove1QtyItem(itemId){
         dispatch({
-            type: REMOVE_FROM_CART,
-            payload: { itemId, quantity }
+            type: QUIT_ONE_QTY,
+            payload: { itemId }
+        })
+    }
+
+    function removeItem(itemId){
+        dispatch({
+            type: QUIT_ITEM,
+            payload: { itemId }
+        })
+    }
+
+    function voidCart(){
+        dispatch({
+            type: VOID_CART
         })
     }
 
@@ -79,8 +94,10 @@ const useCart = () => {
 
     return {
         addCartItem,
-        removeCartItem,
         restoreCart,
+        remove1QtyItem,
+        removeItem,
+        voidCart,
         getCartItemsForDB
     }
 }
