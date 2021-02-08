@@ -11,29 +11,29 @@ const ProductCard = (props) => {
     const { title, id_product, cover, price, 'new': isNew } = props;
 
     return(
-        <Card fluid>
+        <Card fluid className={s.cardHover}>
             <Card.Content extra />
 
             <Link href={`/product/${id_product}`}>
-                <a className={s.coverContainer}>
-                    <img src={cover} className={s.cover}/>
+                <a>
+                    <img src={cover} className={s.cover}/>    
                 </a>
             </Link>
             
             <Card.Content>
-                <h2 className={s.price}>USD$ {price}</h2>
-                
                 <Link href={`/product/${id_product}`}>
-                    <a>    
+                    <a>
+                        <h2 className={s.price}>USD$ {price}</h2>
+                        
                         <h2 className={s.title}>
                             {cutText(title)}
-                        </h2>
+                        </h2>   
+                        
+                        <Card.Meta>
+                            <span>{parseInt(isNew) ? 'New' : 'Used'}</span>
+                        </Card.Meta>
                     </a>
                 </Link>
-                
-                <Card.Meta>
-                    <span>{parseInt(isNew) ? 'New' : 'Used'}</span>
-                </Card.Meta>
             </Card.Content>
         </Card>
     )

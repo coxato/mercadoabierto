@@ -24,6 +24,7 @@ const ProductsList = () => {
                         overflow: hidden;
                         margin-bottom: 10px;
                         border-radius: 5px;
+                        padding-bottom: 30px;
                     }
                 `}
             </style>

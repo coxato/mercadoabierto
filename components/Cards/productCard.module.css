@@ -20,4 +20,13 @@
     width: 100%;
     height: 255px;
     object-fit: contain;
+    transition: 0s;
+}
+
+.cardHover{
+    transition: .1s;
+}
+
+.cardHover:hover{
+    box-shadow: 0 25px 20px 0 rgb(0 0 0 / 16%), 0 -1px 2px 0 rgb(0 0 0 / 10%);
 }
