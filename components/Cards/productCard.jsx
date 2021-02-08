@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Card } from 'semantic-ui-react'
 // utils
 import { cutText } from '../../utils/textUtils';
+// style
+import s from './productCard.module.css';
 
 const ProductCard = (props) => {
 
@@ -13,19 +15,17 @@ const ProductCard = (props) => {
             <Card.Content extra />
 
             <Link href={`/product/${id_product}`}>
-                <a>
-                    <img src={cover} width="100%" />
+                <a className={s.coverContainer}>
+                    <img src={cover} className={s.cover}/>
                 </a>
             </Link>
-
-            <Card.Content extra />
             
             <Card.Content>
-                <h2 className="price">USD$ {price}</h2>
+                <h2 className={s.price}>USD$ {price}</h2>
                 
                 <Link href={`/product/${id_product}`}>
                     <a>    
-                        <h2 className="title">
+                        <h2 className={s.title}>
                             {cutText(title)}
                         </h2>
                     </a>
@@ -35,29 +35,6 @@ const ProductCard = (props) => {
                     <span>{parseInt(isNew) ? 'New' : 'Used'}</span>
                 </Card.Meta>
             </Card.Content>
-            
-            <style jsx>
-            {`
-                .price{
-                    color: #333;
-                    display: flex;
-                    font-size: 24px;
-                    font-weight: 500;
-                    margin-right: 8px;
-                    line-height: 1;
-                    font-family
-                }
-
-                .title{
-                    color: #333;
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 1.3;
-                    max-height: 36px;
-                    margin-bottom: 0;
-                }
-            `}
-            </style>
         </Card>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { List, Image } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 // utils
 import { cutText } from '../../utils/textUtils';
 // style
@@ -16,7 +16,7 @@ const ProductCard = (props) => {
                 <div className={s.left}>
                     <Link href={`/product/${id_product}`}>
                         <a>
-                            <Image rounded size="small" className={s.cover} src={cover} alt={title}/>
+                            <img className={s.cover} src={cover} alt={title}/>
                         </a>
                     </Link>
                 </div>

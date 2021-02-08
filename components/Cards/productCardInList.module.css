@@ -9,7 +9,11 @@
 }
 
 .cover{
-    /* width: 130px; */
+    width: 120px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .right{
