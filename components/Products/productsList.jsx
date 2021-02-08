@@ -2,20 +2,26 @@ import React, { useContext } from 'react';
 // components
 import ProductGridView from './gridView';
 import ProductListView from './listView';
+import ZeroResultsProducts from '../NotFound/zeroResultsProducts';
 // context
 import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
 
 const ProductsList = () => {
     const { productsView, productsData } = useContext(ProductListContext);
+    const { results } = productsData;
 
     return (
         <div className="container">
-            {
+            {   
+                results?.length === 0
+                ? 
+                <ZeroResultsProducts/> 
+                :
                 productsView === 'grid'
                 ?
-                <ProductGridView products={productsData.results} />
+                <ProductGridView products={results} />
                 :
-                <ProductListView products={productsData.results} />
+                <ProductListView products={results} />
             }
             <style jsx>
                 {`

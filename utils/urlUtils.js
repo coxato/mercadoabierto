@@ -17,6 +17,9 @@ const getSearchQuery = () => {
     return decodeURIComponent(searchURI);
 }
 
+const getSearchText = () => {
+    return getCategoryFromPath() || getSearchQuery();
+}
 
 const getProductsPathName = () => {
     const pathName = window.location.pathname;
@@ -54,5 +57,6 @@ export {
     getProductsPathName, 
     getParsedUrlOfProducts,
     getCategoryFromPath,
-    getSearchQuery
+    getSearchQuery,
+    getSearchText
 }
