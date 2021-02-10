@@ -17,10 +17,10 @@ import s from './homecarousel.module.css';
 
 const BANNERS = [
     {
-        desktop: '/images/desktop-smartphones.png',
-        tablet: '/images/mobile-smartphones.png',
-        smartphone: '/images/mobile-smartphones.png',
-        link: '/category/smartphones'
+        desktop: '/images/desktop-laptops.png',
+        tablet: '/images/mobile-laptops.png',
+        smartphone: '/images/mobile-laptops.png',
+        link: '/category/laptops'
     },
     {
         desktop: '/images/desktop-videogames.png',
@@ -29,10 +29,10 @@ const BANNERS = [
         link: '/category/videogames'
     },
     {
-        desktop: '/images/desktop-laptops.png',
-        tablet: '/images/mobile-laptops.png',
-        smartphone: '/images/mobile-laptops.png',
-        link: '/category/laptops'
+        desktop: '/images/desktop-smartphones.png',
+        tablet: '/images/mobile-smartphones.png',
+        smartphone: '/images/mobile-smartphones.png',
+        link: '/category/smartphones'
     },
 ]
 
