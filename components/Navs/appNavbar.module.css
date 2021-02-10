@@ -6,6 +6,7 @@
     padding: 15px;
     position: relative;
     justify-items: center;
+    align-items: center;
 }
 
 .noResponsive{

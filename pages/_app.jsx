@@ -22,7 +22,7 @@ router.events.on('routeChangeComplete', () => {
 }) 
 router.events.on('routeChangeError', () => NProgress.done());
 
-
+// TODO: put all this HOC's in <InitStoreHOC /> 
 const App = ({ Component, pageProps }) => {
     return (
         <UserHOC>

@@ -1,0 +1,52 @@
+.container{
+    position: relative;
+}
+
+.container:hover .btn{
+    opacity: 1;
+}
+
+.btn{
+    position: absolute;
+    top: 40%;
+    padding: 13px 0;
+    background-color: #fff;
+    border: none;
+    transition: .2s;
+    outline: none;
+    opacity: 0;
+}
+
+.btnLeft{
+    left: 0;
+    border-radius: 0 7px 7px 0;
+}
+
+.btnRight{
+    right: 0;
+    border-radius: 7px 0 0 7px;
+}
+
+.btn:hover{
+    box-shadow: 0 7px 16px 0 rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 10%)
+}
+
+.dotContainer{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 10px;
+}
+
+.dotContainer button{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgb(207, 207, 207);
+    padding: 0;
+    outline: none;
+    border: none;
+    margin-right: 10px;
+    transition: .2s;
+}

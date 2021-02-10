@@ -38,6 +38,11 @@ i.icon.icon-no-margin{
     margin: auto;
 }
 
+.carousel__dot--selected{
+    background: #fff !important;
+    transform: scale(1.7);
+}
+
 /* autoComplete.js owerwite */
 .autoComplete_wrapper{
     width: 100%;
