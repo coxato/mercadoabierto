@@ -20,3 +20,43 @@ export const orderOptions = [
         value: '{"orderBy":"price","order":"DESC"}'
     }
 ]
+
+
+export const categoriesOptions = [
+    {
+        key: 'smartphones',
+        text: 'Smartphones',
+        value: 'smartphones',
+        icon: 'mobile alternate'
+    },
+    {
+        key: 'smartwatchs',
+        text: 'Smartwatchs',
+        value: 'smartwatchs',
+        icon: 'clock'
+    },
+    {
+        key: 'laptops',
+        text: 'Laptops',
+        value: 'laptops',
+        icon: 'laptop'
+    },
+    {
+        key: 'video-games',
+        text: 'Videogames',
+        value: 'videogames',
+        icon: 'gamepad'
+    },
+    {
+        key: 'tv',
+        text: "TV's",
+        value: 'tv',
+        icon: 'tv'
+    },
+    {
+        key: 'pc-components',
+        text: "PC components",
+        value: 'pc-components',
+        icon: 'cog'
+    },
+]

@@ -1,46 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'; 
 import { Dropdown } from 'semantic-ui-react';
+// utils
 import { getCategoryFromPath } from '../../utils/urlUtils';
+import { categoriesOptions } from '../../utils/constants';
 
-const categoriesOptions = [
-    {
-        key: 'smartphones',
-        text: 'Smartphones',
-        value: 'smartphones',
-        icon: 'mobile alternate'
-    },
-    {
-        key: 'smartwatchs',
-        text: 'Smartwatchs',
-        value: 'smartwatchs',
-        icon: 'clock'
-    },
-    {
-        key: 'laptops',
-        text: 'Laptops',
-        value: 'laptops',
-        icon: 'laptop'
-    },
-    {
-        key: 'video-games',
-        text: 'Videogames',
-        value: 'videogames',
-        icon: 'gamepad'
-    },
-    {
-        key: 'tv',
-        text: "TV's",
-        value: 'tv',
-        icon: 'tv'
-    },
-    {
-        key: 'pc-components',
-        text: "PC components",
-        value: 'pc-components',
-        icon: 'cog'
-    },
-]
 
 const CategoriesNavbar = () => {
 

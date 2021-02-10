@@ -1,12 +1,14 @@
 import React from 'react';
 import AppLayout from '../Layouts/appLayout';
+// components
 import HomeCarousel from '../Carousels/homeCarousel';
+import CategoriesHome from './categoriesHome';
 
 const Home = () => {
     return (
         <AppLayout>
             <HomeCarousel />
-            <div style={{backgroundColor: 'blueviolet', width: '100%', height: '200px'}} />
+            <CategoriesHome/>
         </AppLayout>
     );
 }
