@@ -81,12 +81,12 @@
 
 @media screen and (max-width: 700px){
     .gridWrapper{
-        grid-template-columns: 400px;
+        grid-template-columns: 200px 200px;
     }
 
     .categoryContainer{
-        width: 400px;
-        height: 210px;
+        width: 200px;
+        height: 130px;
     }
 
     .titleWrapper{
@@ -94,17 +94,17 @@
     }
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 500px){
     .gridWrapper{
-        grid-template-columns: 300px;
+        grid-template-columns: 160px 160px;
     }
 
     .categoryContainer{
-        width: 300px;
-        height: 200px;
+        width: 160px;
+        height: 110px;
     }
 
     .titleWrapper{
-        width: 300px;        
+        width: 320px;        
     }
 }

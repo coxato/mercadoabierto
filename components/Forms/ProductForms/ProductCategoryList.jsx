@@ -1,14 +1,8 @@
 import React from 'react';
 import { Form, Header } from 'semantic-ui-react';
+import { categoriesOptions } from '../../../utils/constants';
 // styles
 import s from './product-forms.module.css';
-
-const categories = ['smartphones', 'tv', 'smartwatchs', 'laptops', 'videogames', 'pc-components'];
-const categoriesOpts = categories.map( category => ({
-    key: category,
-    text: category,
-    value: category,
-}))
 
 const CategorySelectForm = ({handleChange}) => {
     return (
@@ -23,7 +17,7 @@ const CategorySelectForm = ({handleChange}) => {
                     name="category"
                     fluid
                     label='Category'
-                    options={categoriesOpts}
+                    options={categoriesOptions}
                     placeholder='Category'
                 />
             </div>
