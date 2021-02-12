@@ -31,7 +31,7 @@ const FullInfo = ({ productData, sellerData }) => {
                     
                     <Feed>
                         <Feed.Event>
-                            <Feed.Label image="/images/default-image.png" />
+                            <Feed.Label image={sellerPhoto} />
                             <Feed.Content>
                                 <Link href={`/users/${sellerId}`}>
                                     <a>

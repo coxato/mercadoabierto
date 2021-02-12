@@ -17,7 +17,7 @@ const AppNavbar = () => {
 
     const { checkIsLogged } = useUser();
     const [loading, setLoading] = useState(true);
-    const [isLogged, setIsLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
     const [showMenuResponsive, setShowMenuResponsive] = useState(false);
     const [isLaptop, setIsLaptop] = useState(false);
 
@@ -78,6 +78,11 @@ const AppNavbar = () => {
                 {
                     isLogged ? (
                         <div className={s.cartAndAvatar}>
+                            <Link href="/submitProduct">
+                                <a>
+                                    <Button content="Sell" color="green" />
+                                </a>
+                            </Link>
                             <CartNavbar />
                             <UserLoggedAvatar />
                         </div>
@@ -86,7 +91,7 @@ const AppNavbar = () => {
                             <Button.Group fluid>
                                     <Link href="/login">
                                         <a>
-                                            <Button basic={!isLaptop} color={ isLaptop ? 'green' : 'blue' } fluid>login</Button>
+                                            <Button inverted color="blue" fluid>login</Button>
                                         </a>
                                     </Link>
 

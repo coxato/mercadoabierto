@@ -1,6 +1,6 @@
 .container{
     display: grid;
-    grid-template-columns: 1fr 450px;
+    grid-template-columns: 1fr 485px;
     width: 100%;
     background-color: var(--yellow);
     padding: 15px;
@@ -31,10 +31,12 @@
 
 .responsive{
     display: flex;
+    align-items: center;
 }
 
 .cartAndAvatar{
     display: flex;
+    align-items: center;
 }
 
 .loginSignup{
