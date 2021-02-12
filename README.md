@@ -1,3 +1,4 @@
+![mercadoabierto logo](https://i.ibb.co/z4yKrhw/full-logo.png)
 # mercadoabierto, the mercadolibre clone
 This project is a clone of [mercadolibre](https://www.mercadolibre.com/) clone called by me as "mercadoabierto". It's one of the best clones out there.
 
