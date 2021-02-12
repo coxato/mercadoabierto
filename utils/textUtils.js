@@ -1,5 +1,9 @@
 // some utils for text
 
+function capitalize(str) {
+    return str[0].toUpperCase() + str.substring(1);
+}
+
 /**
  * 
  * @description capitalize first letter and slice if is necessary
@@ -8,13 +12,14 @@
  * @returns {String} string
  */
 function cutText(str, maxLength = 30) {
-    const txt = str.substring(1, maxLength);
+    const txt = str.substring(0, maxLength);
 
     const dots = str.length > maxLength ? '...' : '';
 
-    return str[0].toUpperCase() + txt + dots;
+    return capitalize(txt) + dots;
 }
 
 export {
-    cutText
+    cutText,
+    capitalize
 }

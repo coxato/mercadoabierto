@@ -1,6 +1,9 @@
 import React from 'react';
+import CustomHead from '../../components/Head/head';
 import ProductsListLayout from '../../components/Layouts/productsListLayout';
 import productRequests from '../../requests/products';
+// utils
+import { capitalize } from '../../utils/textUtils';
 
 export async function getServerSideProps({ params, query }){
     const category = params.categoryName;
@@ -16,7 +19,8 @@ export async function getServerSideProps({ params, query }){
 
         return {
             props: {
-                productsData: response
+                productsData: response,
+                category
             }
         }
     } catch (error) {
@@ -27,8 +31,14 @@ export async function getServerSideProps({ params, query }){
     }
 }
 
-const CategoryPage = ({productsData}) => {
-    return <ProductsListLayout productsData={productsData}/>
+const CategoryPage = ({productsData, category}) => {
+    return (
+        <>
+            <CustomHead title={capitalize(category)} />
+
+            <ProductsListLayout productsData={productsData}/>
+        </>
+    ); 
 }
  
 export default CategoryPage;

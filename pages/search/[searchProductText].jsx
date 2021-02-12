@@ -1,6 +1,8 @@
 import React from 'react';
+import CustomHead from '../../components/Head/head';
 import ProductsListLayout from '../../components/Layouts/productsListLayout';
 import productRequests from '../../requests/products';
+
 
 export async function getServerSideProps({ params, query }){
     const searchProductText = params.searchProductText;
@@ -16,7 +18,8 @@ export async function getServerSideProps({ params, query }){
 
         return {
             props: {
-                productsData: response
+                productsData: response,
+                searchProductText
             }
         }
     } catch (error) {
@@ -27,8 +30,14 @@ export async function getServerSideProps({ params, query }){
     }
 }
 
-const SearchPage = ({productsData}) => {
-    return <ProductsListLayout productsData={productsData}/>
+const SearchPage = ({productsData, searchProductText}) => {
+    return (
+        <>
+            <CustomHead title={searchProductText} />
+
+            <ProductsListLayout productsData={productsData}/>
+        </>
+    );
 }
  
 export default SearchPage;

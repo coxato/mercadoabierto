@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import CustomHead from '../components/Head/head';
 // components
 import ProductFormContainer from '../components/Forms/ProductForms/ProductFormContainer';
 import Layout from '../components/Layouts/appLayout';
@@ -27,13 +28,18 @@ const SubmitProductPage = () => {
     }, []);
 
     return (
-        !loading
-        ?
-        <Layout>
-            <ProductFormContainer />
-        </Layout>
-        : 
-        null
+        <>
+        <CustomHead title="Sell a product" />
+        {
+            !loading
+            ?
+            <Layout>
+                <ProductFormContainer />
+            </Layout>
+            : 
+            null
+        }
+        </>
     );
 }
  

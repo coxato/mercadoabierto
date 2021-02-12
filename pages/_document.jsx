@@ -5,7 +5,8 @@ class MyExtendedDocument extends Document{
         return(
             <Html>
                 <Head>
-                <link rel="stylesheet" href="/css/autocomplete.css" />
+                    <link rel="stylesheet" href="/css/autocomplete.css" />
+                    <link rel="icon" type="image/png" href="/images/logo-v3.png" />
 
                 </Head>
                 <body className="my-super-custom-css-class">

@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomHead from '../../components/Head/head';
 import productRequests from '../../requests/products';
 import ProductDetail from '../../components/Products/productDetail';
 
@@ -17,14 +18,19 @@ export const getServerSideProps = async ({ params: { productId } }) => {
         props: {
             productData,
             photos,
-            sellerData
+            sellerData,
+            productTitle: productData.title
         }
     }
 }
 
-const ProductPage = ({ productData, photos, sellerData }) => {
+const ProductPage = ({ productData, photos, sellerData, productTitle }) => {
     return (
-        <ProductDetail {...{productData, photos, sellerData}} />
+        <>
+            <CustomHead title={productTitle} />
+
+            <ProductDetail {...{productData, photos, sellerData}} />
+        </>
     );
 }
 
