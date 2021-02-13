@@ -50,7 +50,7 @@ const SignupForm = ({
                     <Form.Input name="password" onChange={handleChange} placeholder='password' minLength="8" label="Password" type="password" required />
                 </Form.Group>
                 
-                <Button type='submit' primary fluid size='big' loading={loading}>Signup!</Button>
+                <Button type='submit' primary fluid size='big' loading={loading} disabled={success.is}>Signup!</Button>
                 
                 <div style={{height: '10px'}} />
 
