@@ -7,10 +7,7 @@
 }
 
 .childrenContainer{
-    /* background: brown; */
-    position: absolute;
     width: 100%;
-    top: 30%;
     display: flex;
     justify-content: center;
 }
@@ -20,13 +17,13 @@
     border-radius: 7px;
     overflow: hidden;
     box-shadow: 0 .0625rem .125rem 0 rgba(0,0,0,.15);
-    margin: -6.875rem auto 0;
+    margin: -150px 0 70px 0;
     padding: 2rem 3.5rem;
 }
 
 
-@media screen and (max-width: 450px){
-    .childrenContainer{
-        top: 24%;
+@media screen and (max-width: 500px){
+    .childrenWrapper{
+        margin-top: -210px;
     }
 }

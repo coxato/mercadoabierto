@@ -2,7 +2,7 @@ import React from 'react';
 import CustomHead from '../components/Head/head';
 // components
 import AppLayout from '../components/Layouts/appLayout';
-import ReactMarkdown from 'react-markdown';
+import MarkdownBlog from '../components/Markdown/blog';
 // markdown
 import content from '../blogEntries/aboutMercadoabierto.md';
 
@@ -12,7 +12,7 @@ const AboutPage = () => {
             <CustomHead title="About mercadoabierto" />
         
             <AppLayout>
-                <ReactMarkdown source={content} />
+                <MarkdownBlog content={content} />
             </AppLayout>
         </>
     );

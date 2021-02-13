@@ -1,5 +1,6 @@
 import React from 'react';
 import SimpleHero from '../Heros/simpleHero';
+import Footer from '../Footers/footer';
 import s from './layoutsStyle/simpleLayout.module.css';
 
 const SimpleLayout = ({ children, heroColor = '' }) => {
@@ -14,7 +15,7 @@ const SimpleLayout = ({ children, heroColor = '' }) => {
                 </div>
             </div>
 
-            <footer><h1>footer</h1></footer>
+            <Footer />
         </div>
     );
 }

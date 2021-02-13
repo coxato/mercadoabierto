@@ -1,0 +1,46 @@
+.container{
+    padding: 20px 200px;
+    background: rgb(255, 255, 255);
+    flex: 1;
+}
+.wrapper{
+    padding: 5px 90px;
+}
+
+.wrapper p{
+    font-size: 20px;
+}
+
+.wrapper h1{
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 1200px){
+    .container{
+        padding: 20px 130px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .container{
+        padding: 20px 100px;
+    }
+    .wrapper{
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .container{
+        padding: 20px 100px;
+    }
+    .wrapper{
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .container{
+        padding: 20px 10px;
+    }
+}
