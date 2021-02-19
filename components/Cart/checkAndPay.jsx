@@ -3,7 +3,7 @@ import { Table, Button, Header, Modal } from 'semantic-ui-react';
 import purchaseRequests from '../../requests/purchase';
 // global store
 import { useCart } from '../../store/cart';
-import { useUserInfo } from '../../store/user';
+import { useUserInfo, useUser } from '../../store/user';
 // style
 import s from './checkAndPay.module.css';
 
@@ -15,10 +15,11 @@ const CheckAndPay = ({ items, handleShowPay }) => {
 
     const { voidCart } = useCart();
     const { username } = useUserInfo();
+    const { updateMoney: updateMoneyUX } = useUser();
 
     useEffect(() => {
         const total = items.reduce((current, item) => {
-            return current + item.quantity * item.price 
+            return current + Number(item.quantity) * Number(item.price); 
         }, 0);
 
         setTotalPrice(total);
@@ -28,6 +29,8 @@ const CheckAndPay = ({ items, handleShowPay }) => {
         setLoading(true);
 
         await purchaseRequests.purchase(items);
+        // update money (just for user UX, real change is in backend)
+        updateMoneyUX(-totalPrice);
         // void cart
         voidCart();
 

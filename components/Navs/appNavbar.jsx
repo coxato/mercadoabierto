@@ -4,7 +4,7 @@ import { Button, Icon } from 'semantic-ui-react';
 // custom hook
 import { useUser } from '../../store/user';
 // components
-import UserLoggedAvatar from './userLoggedAvatar';
+import AvatarAndInfoContainer from './avatarAndInfoContainer';
 import CartNavbar from './cartNavbar';
 import CategoriesNavbar from './categoriesNavbar';
 import SearchBar from '../SearchBar/searchBar';
@@ -84,7 +84,7 @@ const AppNavbar = () => {
                                 </a>
                             </Link>
                             <CartNavbar />
-                            <UserLoggedAvatar />
+                            <AvatarAndInfoContainer />
                         </div>
                     ) : (
                         <div className={s.loginSignup}>

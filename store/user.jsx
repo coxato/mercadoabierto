@@ -9,7 +9,7 @@ import React, {
 // reducer
 import userReducer from './reducers/user';
 // types
-import { ADD_INFO, REMOVE_INFO } from './types/user';
+import { ADD_INFO, REMOVE_INFO, UPDATE_MONEY } from './types/user';
 // utils
 import { setStorageValues, getStorageValues, cleanStorageValues } from '../utils/localStorage';
 
@@ -18,31 +18,7 @@ const DispatchContext = createContext();
 
 
 const UserHOC = ({ children }) => {
-    
     const [state, dispatch] = useReducer(userReducer, {});
-    // const [loading, setLoading] = useState(true);
-
-    // client side
-    // if user reload the page
-    // useEffect(() => {
-    //     const userInfo = getStorageValues('userInfo');
-    //     if(userInfo){
-    //         dispatch({
-    //             type: ADD_INFO,
-    //             payload: userInfo
-    //         })
-    //     }
-
-    //     setLoading(false);
-    // }, []);
-
-    // return (
-    //     <StateContext.Provider value={state}>
-    //         <DispatchContext.Provider value={dispatch}>
-    //             { loading ? null : children }
-    //         </DispatchContext.Provider>
-    //     </StateContext.Provider>
-    // );
 
     return (
         <StateContext.Provider value={state}>
@@ -94,10 +70,25 @@ const useUser = () => {
         })
     }
 
+    function updateMoney(ammount){
+        const userInfo = getStorageValues('userInfo');
+
+        const newAmmount = parseInt(userInfo.money) + ammount;
+        userInfo.money = newAmmount;
+        // save in localstorage
+        setStorageValues('userInfo', userInfo);
+        // save in state
+        dispatch({
+            type: UPDATE_MONEY,
+            money: newAmmount
+        })
+    }
+
     return {
         checkIsLogged,
         saveUserInfo,
-        removeUserInfo
+        removeUserInfo,
+        updateMoney
     }
 }
 

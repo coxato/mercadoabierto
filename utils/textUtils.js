@@ -1,7 +1,9 @@
 // some utils for text
 
 function capitalize(str) {
-    return str[0].toUpperCase() + str.substring(1);
+    const txt = str.toLowerCase();
+    
+    return txt[0].toUpperCase() + txt.substring(1);
 }
 
 /**

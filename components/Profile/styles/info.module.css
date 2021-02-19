@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 50px;
+    background: blueviolet;
+}
+.right{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.title{
+    margin: 0;
+}

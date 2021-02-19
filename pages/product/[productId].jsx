@@ -5,22 +5,27 @@ import ProductDetail from '../../components/Products/productDetail';
 
 
 export const getServerSideProps = async ({ params: { productId } }) => {
-    const { 
-        productData, 
-        photos, 
-        sellerData } = await productRequests.getProductById(productId);
-
-    if(!productData){
-        return { notFound: true }
-    }
-
-    return {
-        props: {
-            productData,
-            photos,
-            sellerData,
-            productTitle: productData.title
+    try {
+        const { 
+            productData, 
+            photos, 
+            sellerData } = await productRequests.getProductById(productId);
+    
+        if(!productData){
+            return { notFound: true }
         }
+    
+        return {
+            props: {
+                productData,
+                photos,
+                sellerData,
+                productTitle: productData.title
+            }
+        }
+    } catch ({message}) {
+        console.error("[Error getting product data] " + message);
+        return { notFound: true }
     }
 }
 

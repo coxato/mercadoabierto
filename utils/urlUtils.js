@@ -2,11 +2,17 @@
  * Utils for parse url's
  */
 
+ const getLastPath = (path = null) => {
+    if(!path)path = window.location.pathname; 
+    
+    return path.split('/').pop();
+ }
+
 const getCategoryFromPath = (path = null) => {
     if(!path)path = window.location.pathname; 
     
     if(/category/.test(path)){
-       return path.split('/').pop();
+       return getLastPath(path);
     }
     return '';
 }
@@ -53,10 +59,12 @@ const getParsedUrlOfProducts = (queryParamsObj) => {
 }
 
 
+
 export { 
     getProductsPathName, 
     getParsedUrlOfProducts,
     getCategoryFromPath,
     getSearchQuery,
-    getSearchText
+    getSearchText,
+    getLastPath
 }

@@ -9,9 +9,9 @@
     cursor: pointer;
 }
 
-.container:hover{
+/* .container:hover{
     border-color: black;
-}
+} */
 
 .right{
     margin-left: 5px;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'semantic-ui-react';
 import { useUserInfo } from '../../store/user';
 // style
-import s from './userLoggedAvatar.module.css';
+import s from './avatarAndInfo.module.css';
 
 
 const UserNavAvatar = () => {
