@@ -45,7 +45,7 @@ const ProfileTabsContainer = ({ profileTab }) => {
 
     return (
         <div className="container">
-            <TabsBar handleTabChange={setCurrentTab} />
+            <TabsBar {...{ currentTab, setCurrentTab }} />
             
             <TabHOC currentTab={currentTab} />
         </div>

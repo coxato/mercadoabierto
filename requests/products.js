@@ -77,6 +77,17 @@ productRequests.getProductsByInputSearch = async function(searchStr, options = s
     return products;
 }
 
+productRequests.getAllUserProducts = async function(username) {
+    try {
+        
+        const userProducts = await request.get(`${BASE_URL}/products/user-products/${username}`);
+        return userProducts;
+
+    } catch ({message}) {
+        console.error("[Error getting all the products on sale of user] " + message);
+    }
+}
+
 // get suggestions while user is writing in searchbar
 
 let timeout; // to perform ajax request

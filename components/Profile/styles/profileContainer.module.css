@@ -1,4 +1,25 @@
 .container{
-    background: rgb(75, 255, 120);
+    /* background: rgb(75, 255, 120); */
     padding: 20px 150px 40px 150px;
+}
+
+@media screen and (max-width: 800px){
+    .container{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .container{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media screen and (max-width: 540px){
+    .container{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import ProductCard from '../Cards/productCard';
-// context
-import { ProductListContext } from '../ContextsAndHOCs/productsListHOC';
+// utils
+import { getScreenData } from '../../utils/screen';
 
 const nColumns = {
     'smartphone': 1,
@@ -11,7 +11,7 @@ const nColumns = {
 }
 
 const ProductGridView = ({ products }) => {
-    const { currentDevice } = useContext(ProductListContext);
+    const { currentDevice } = getScreenData();
 
     return (
         <Grid columns={nColumns[currentDevice]} centered>

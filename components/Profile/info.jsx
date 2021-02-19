@@ -16,8 +16,8 @@ const Info = ({username, first_name, last_name, photo_url}) => {
             </div>
 
             <div className={s.right}>
-                <h1 className={s.title}>{fullName}</h1>
-                <h2 className={s.title}>{'@' + username}</h2>
+                <h1 className={s.h1}>{fullName}</h1>
+                <h2 className={s.h2}>{'@' + username}</h2>
             </div>
         </div>
     );

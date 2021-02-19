@@ -34,6 +34,11 @@ i.icon.icon-no-margin{
     margin-left: 27px;
 }
 
+.ui.centered.one.column.grid{
+    width: 100% !important;
+    margin: 0 !important;
+}
+
 #githubIcon-about-home{
     font-size: 22px;
     margin: 0;

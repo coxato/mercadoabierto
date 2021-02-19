@@ -1,0 +1,30 @@
+.container{
+    /* background: yellow; */
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    border-top: 1px solid rgb(177, 177, 177);
+}
+
+.tab{
+    /* background: rosybrown; */
+    padding: 13px 28px;
+    border-top: 1px solid rgb(194, 194, 194);
+    cursor: pointer;
+    margin-top: -1px;
+    color: var(--black);
+}
+
+.tab.active{
+    border-top-color: var(--black);
+    background: rgb(207, 207, 207);
+}
+
+@media screen and (max-width: 540px){
+    .tab{
+        padding: 15px 35px;
+        font-size: 22px;
+        width: 100%;
+        text-align: center;
+    }
+}

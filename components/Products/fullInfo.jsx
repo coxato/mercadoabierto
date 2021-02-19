@@ -10,7 +10,6 @@ const FullInfo = ({ productData, sellerData }) => {
     
     const { description, date } = productData;
     const { 
-        id_user: sellerId, 
         username: sellerUsername, 
         photo_url: sellerPhoto 
     } = sellerData;
@@ -33,7 +32,7 @@ const FullInfo = ({ productData, sellerData }) => {
                         <Feed.Event>
                             <Feed.Label image={sellerPhoto} />
                             <Feed.Content>
-                                <Link href={`/users/${sellerId}`}>
+                                <Link href={`/users/${sellerUsername}`}>
                                     <a>
                                         <h3>{sellerUsername}</h3>
                                     </a>
