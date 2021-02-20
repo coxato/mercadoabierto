@@ -10,14 +10,14 @@ const nColumns = {
     'desktop': 3
 }
 
-const ProductGridView = ({ products }) => {
+const ProductGridView = ({ products, indexKey = false }) => {
     const { currentDevice } = getScreenData();
 
     return (
         <Grid columns={nColumns[currentDevice]} centered>
             {
-                products.map( product => (
-                    <Grid.Column key={product.id_product}>
+                products.map( (product, idx) => (
+                    <Grid.Column key={indexKey ? idx : product.id_product}>
                         <div className="column-item">
                             <ProductCard {...product} />
                         </div>

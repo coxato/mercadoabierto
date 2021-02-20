@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Loader, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 // components
 import ProductsGrid from '../Products/gridView';
+import Loader from '../Loaders/simple';
 // requests
 import productRequest from '../../requests/products';
 
@@ -26,7 +27,7 @@ const SalesTab = () => {
             {
                 loading
                 ?
-                <Loader indeterminate size="huge" />
+                <Loader name="instagram" color="var(--black)" />
                 :
                 userProducts.length
                 ?

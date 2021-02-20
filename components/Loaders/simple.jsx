@@ -1,10 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+// loaders
+import InstagramType from './simpleLoaders/instagramType';
 
-// TODO: implement simple loaders logic
-const SimpleLoader = () => {
+const LoadersHoc = ({ name, color }) => {
+    const loaders = {
+        'instagram': <InstagramType {...{color}} />
+    }
+
     return (
-        <h1>loader</h1>
-    );
+        <div className="loadersHOC">
+            {loaders[name]}
+        </div>
+    )
 }
+
+const SimpleLoader = ({ name, color }) => {
+    return <LoadersHoc {...{name, color}} />;
+}
+
+SimpleLoader.propTypes = {
+    name: PropTypes.oneOf(["instagram"]).isRequired,
+    color: PropTypes.string
+}
+ 
  
 export default SimpleLoader;

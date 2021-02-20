@@ -23,4 +23,16 @@ purchaseRequests.purchase = async function(items){
     }
 }
 
+purchaseRequests.getAllUserPurchases = async function(id_user) {
+    try {
+        const userPurchases = await request.get(`${BASE_URL}/purchases/${id_user}`, {
+            token: true
+        });
+        return userPurchases;
+
+    } catch ({message}) {
+        console.error("[error getting user purchases]", message);
+    }
+}
+
 export default purchaseRequests;

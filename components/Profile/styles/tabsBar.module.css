@@ -9,7 +9,7 @@
 .tab{
     /* background: rosybrown; */
     padding: 13px 28px;
-    border-top: 1px solid rgb(194, 194, 194);
+    border-top: 2px solid rgb(194, 194, 194);
     cursor: pointer;
     margin-top: -1px;
     color: var(--black);
@@ -17,7 +17,7 @@
 
 .tab.active{
     border-top-color: var(--black);
-    background: rgb(207, 207, 207);
+    background: rgb(235, 235, 235);
 }
 
 @media screen and (max-width: 540px){
