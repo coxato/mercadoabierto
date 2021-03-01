@@ -85,3 +85,16 @@ span.autoComplete_highlighted{
     border-radius: 0 0 5px 5px;
     padding: 10px 0;
 }
+
+
+
+/* ================ media queries rewrite =================== */
+
+/* semantic UI */
+@media screen and (max-width: 750px){
+    .ui.blue.right.ribbon.label,
+    .ui.yellow.right.ribbon.label{
+        margin-left: -15px;
+        margin-bottom: -5px;
+    }
+}

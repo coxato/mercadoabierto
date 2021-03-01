@@ -2,11 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { Breadcrumb } from 'semantic-ui-react';
 import { cutText } from '../../utils/textUtils';
-
+// style
+import s from './breadcrumb.module.css';
 
 const ProductsBreadcrumb = ({ category = '', title = '' }) => {
     return (
-        <div className="container">
+        <div className={s.container}>
             <Breadcrumb>
                 <Breadcrumb.Section>
                     <Link href="/"><a>Home</a></Link>
@@ -35,12 +36,6 @@ const ProductsBreadcrumb = ({ category = '', title = '' }) => {
                     </>)
                 }
             </Breadcrumb>
-
-            <style jsx>{`
-                .container{
-                    padding: 20px 0;
-                }
-            `}</style>
         </div>
     );
 }

@@ -58,9 +58,6 @@
     margin-top: 10px;
 }
 
-/* .photosChain{
-     background: red;
-} */
 
 .photoItemCont{
     width: 100%;
@@ -106,4 +103,24 @@
     position: absolute;
     left: 102%;
     width: 100%;
+}
+
+
+
+@media screen and (max-width: 750px){
+    .container{
+        flex-direction: column-reverse;
+    }
+
+    .sliderContainer{
+        padding: 15px;
+    }
+
+    .photosChain{
+        display: flex;
+    }
+
+    .photoItem{
+        width: 50px;
+    }
 }

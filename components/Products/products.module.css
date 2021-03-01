@@ -32,3 +32,20 @@
     grid-template-columns: 1fr;
     gap: 30px;
 }
+
+@media screen and (max-width: 750px){
+    .basicInfoCont{
+        padding: 15px;
+    }
+    .basicInfoWrapper{
+        padding: 5px;
+        border-radius: 4px 0 4px 4px;
+        border: 1px solid #bbb;
+    }
+
+    .fullInfoCont{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 40px;
+    }
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
+import s from './carButtomComponent.module.css';
 
 const AddToCartButtonComponent = ({avaliableQty, handleChange, value, handleClick, loading, canBuy}) => {
 
     return (
-        <div className="container">
+        <div className={s.container}>
             <Input
                 action={{
                     color: 'blue',
@@ -24,13 +25,6 @@ const AddToCartButtonComponent = ({avaliableQty, handleChange, value, handleClic
                 defaultValue={value}
             />
             <p><i>{canBuy ? '' : `You don't have enough money to buy ${value} items`}</i></p>
-
-            <style jsx>{`
-                .container{
-                    padding: 30px 0;
-                    margin-top: 25px;
-                }
-            `}</style>
         </div>
     );
 }
