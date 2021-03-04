@@ -28,7 +28,7 @@ const ProductsPagination = () => {
             }
             <style jsx>{`
                 .container{
-                    margin-top: 20px;
+                    margin: 20px 0 30px 0;
                     width: 100%;
                     display: flex;
                     justify-content: center;

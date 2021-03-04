@@ -3,13 +3,18 @@ import React, { useState } from 'react';
 import { Icon, Header } from 'semantic-ui-react';
 import PhotoContainer from '../../Media/photoContainer';
 import PhotoAlreadyUploaded from '../../Media/photoAlreadyUploaded';
+// store
+import { useProductState } from '../../../store/productCreation';
 // style for forms
 import s from './product-forms.module.css';
 
 const ProductPhotosForm = ({urlsCallback}) => {
+    // get data from store if is editing
+    const { photos } = useProductState();
     
-    const [ photosUrls, setPhotosUrls ] = useState([]); // uploaded photos
-    const [ photosCount, setPhotosCount ] = useState(0);
+    // uploaded photos
+    const [ photosUrls, setPhotosUrls ] = useState(photos.map( p => p.photo_url)); 
+    const [ photosCount, setPhotosCount ] = useState(photos.length);
 
     const sumPhotoCount = () => photosCount <= 6 ? setPhotosCount(photosCount+1) : null;  
     const removePhotoCount = () => photosCount > 0 ? setPhotosCount(photosCount-1) : null;

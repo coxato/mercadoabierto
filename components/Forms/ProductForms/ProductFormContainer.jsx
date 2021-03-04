@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import { useProductCreation } from '../../../store/product';
+import { useProductCreation } from '../../../store/productCreation';
 import productRequests from '../../../requests/products';
 import { productFormValidation } from '../../../utils/productFormValidation';
 // components
@@ -14,15 +14,23 @@ import s from './product-forms.module.css';
 const ProductFormContainer = () => {
 
     // context
-    const { state: contextState } = useProductCreation();
+    const { state: contextState, dispatch: contextDispatch } = useProductCreation();
     // local state
-    const [ productData, setProductData ] = useState({});
-    const [ photosUrls, setPhotosUrls ] = useState([]);
+    const [ productData, setProductData ] = useState(contextState.productData);
+    const [ photosUrls, setPhotosUrls ] = useState(contextState.photos.map( p => p.photo_url));
     const [ loading, setLoading ] = useState(false);
     const [ errors, setErrors ] = useState(false);
     const [ success, setSuccess ] = useState(false);
     const [ openModal, setOpenModal ] = useState(false);
-    const [ productCreatedData, setProductCreatedData ] = useState(null);
+    const [ responseData, setResponseData ] = useState(null);
+    const { isEditing } = contextState;
+
+    // create random id_album
+    useEffect(() => {
+        if(!isEditing){
+            contextDispatch({type: 'new-id_album'});
+        }
+    }, []);
 
     // handlers
     const handleChange = ({target: { name, value }}) => {
@@ -40,7 +48,7 @@ const ProductFormContainer = () => {
         
         const data = {
             ...productData,
-            id_album: contextState.id_album,
+            id_album: contextState.productData.id_album,
             cover: photosUrls[0]
         }
         
@@ -55,10 +63,12 @@ const ProductFormContainer = () => {
             setErrors([]);
         }
 
+        const requestMethod = isEditing ? 'updateProduct' : 'saveProduct';
+
         // create and save product
-        productRequests.saveProduct(data)
-            .then( createdData => {
-                setProductCreatedData(createdData);
+        productRequests[requestMethod](data)
+            .then( _response => {
+                setResponseData(_response);
                 setLoading(false);
                 setSuccess(true);
             })
@@ -75,19 +85,21 @@ const ProductFormContainer = () => {
 
             {
                 success ? (
-                    <ProductSuccessCreated productCreatedData={productCreatedData} />
+                    <ProductSuccessCreated responseData={responseData} />
                 ) : (
                 <>
                     <ProductErrorManagement errors={errors} open={openModal} setOpen={setOpenModal} />
                     
                     <Form onSubmit={handleSubmit} autoComplete="off" className={s.form}>   
-
-                        <ProductForm {...{handleChange}} />
+                        <ProductForm 
+                            handleChange={handleChange} 
+                            isEditing={isEditing}
+                        />
                         
                         <ProductPhotos urlsCallback={getPhotos} />
                         
                         <Button type="submit" fluid size="huge" primary loading={loading}>
-                            Ready, publish my product!
+                            {`Ready, ${isEditing ? 'update':  'publish'} my product!`}
                         </Button>
                     </Form>
                 </>)

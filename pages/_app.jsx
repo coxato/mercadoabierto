@@ -11,7 +11,6 @@ import '../global.css';
 // HOC's
 import UserHOC from '../store/user';
 import CartHOC from '../store/cart';
-import ProductCreationHOC from '../store/product';
 import InitStoreHOC from '../store/initStoreHOC';
 
 //Binding router events to nprogress. 
@@ -27,11 +26,9 @@ const App = ({ Component, pageProps }) => {
     return (
         <UserHOC>
             <CartHOC>
-                <ProductCreationHOC>
-                    <InitStoreHOC>
-                        <Component {...pageProps} />
-                    </InitStoreHOC>
-                </ProductCreationHOC>
+                <InitStoreHOC>
+                    <Component {...pageProps} />
+                </InitStoreHOC>
             </CartHOC>
         </UserHOC>
     );

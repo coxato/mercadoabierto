@@ -28,7 +28,7 @@ const CartInNav = () => {
     }, []);
 
     return (
-        <Link href={`/cart/${id_user}?token=${getToken()}`}>
+        <Link href={`/cart/${id_user}?token=${getToken()}`} as={`/cart/${id_user}`}>
             <a className={s.container}>
                 <Icon name="shop" color="grey" />
                 <div className={s.txt}>( {cartState.totalItemsQty} )</div>

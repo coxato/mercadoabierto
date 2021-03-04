@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import mediaRequests from '../../requests/media';
-import { useProductCreation } from '../../store/product';
+import { useProductState } from '../../store/productCreation';
 import { Icon, Loader, Message } from 'semantic-ui-react';
 
 const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl = ''}) => {
 
-    const { state: { id_album } } = useProductCreation();
+    // context provider state
+    const { productData: { id_album } } = useProductState();
 
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);

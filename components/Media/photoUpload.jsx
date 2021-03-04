@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Progress } from 'semantic-ui-react';
 import mediaRequests from '../../requests/media';
 // store
-import { useProductCreation } from '../../store/product'; 
+import { useProductState } from '../../store/productCreation'; 
 
 const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
     
-    // global state
-    const { state: { id_album } } = useProductCreation();
+    // context provider state
+    const { productData: { id_album } } = useProductState();
     
     // local state
     

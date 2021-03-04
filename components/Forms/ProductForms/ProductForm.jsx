@@ -4,15 +4,19 @@ import { Form, Header } from 'semantic-ui-react';
 import CategoriesList from './ProductCategoryList';
 import TitleAndDescription from './ProductTitleAndDescription';
 import NewOrUsed from './productNewOrUsed';
+// store
+import { useProductState } from '../../../store/productCreation';
 // style for product forms
 import s from './product-forms.module.css';
 
 
-const ProductForm = ({ handleChange }) => {
+const ProductForm = ({ handleChange, isEditing }) => {
+    const { productData: { quantity, price } } = useProductState();
+
     return (
         <div className={s.formCardsContainer}>
 
-            <Header textAlign="center" content="Sell a tech product!" as="h1" />
+            <Header textAlign="center" content={isEditing ? 'Update your product' : 'Sell a tech product!'} as="h1" />
             
             <CategoriesList handleChange={handleChange} />
 
@@ -28,6 +32,7 @@ const ProductForm = ({ handleChange }) => {
                     label='Quantity'
                     type="number"
                     required
+                    defaultValue={quantity}
                 />
             </div>
 
@@ -42,6 +47,7 @@ const ProductForm = ({ handleChange }) => {
                     label='Price (USD)'
                     type="number"
                     required
+                    defaultValue={price}
                 />
             </div>
 

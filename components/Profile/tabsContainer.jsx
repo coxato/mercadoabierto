@@ -39,6 +39,7 @@ const ProfileTabsContainer = ({ profileTab }) => {
 
     useEffect(() => {
         // don't change last path on 'sales' because is like the homepage of user profile
+        // I mean, mercadoabierto.com/<User> not mercadoabierto.com/<User>/sales, it's like instagram profile page 
         const newLastPath = currentTab === 'sales' ? '' : currentTab;
         setLastPath(newLastPath);
     }, [currentTab]);

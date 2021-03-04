@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header, Button } from 'semantic-ui-react';
+// store
+import { useProductState } from '../../../store/productCreation';
 // style for product forms
 import s from './product-forms.module.css';
 
 const NewOrUsedForm = ({handleChange}) => {
-
-    const [ isNew, setIsNew ] = useState(true);
+    const { productData } = useProductState();
+    const [ isNew, setIsNew ] = useState(!!productData.new);
 
     const handleState = _isNew => {
         setIsNew(_isNew);
@@ -16,11 +18,6 @@ const NewOrUsedForm = ({handleChange}) => {
             }
         })
     }
-
-    // set { new: 1 } for default
-    useEffect(() => {
-        handleState(true);
-    }, []);
 
     return (
         <>

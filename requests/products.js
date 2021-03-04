@@ -27,10 +27,34 @@ productRequests.saveProduct = async function(productData){
     }
 }
 
+productRequests.updateProduct = async function(newProductData){
+    const url = `${BASE_URL}/products/update?id_product=${newProductData.id_product}&id_user=${newProductData.id_user}`;
+    // delete innecessary props to update
+    delete newProductData.id_product;
+    delete newProductData.id_user;
+    delete newProductData.avaliable;
+    delete newProductData.date;
 
-productRequests.getProductById = async function(id){
     try {
-        const product = await request.get(`${BASE_URL}/products/${id}`);
+        const updated = await request.put(url, newProductData, { token: true });
+        return updated;
+
+    } catch ({message}) {
+        console.error("[error updating product]", message);
+        throw new Error(message);
+    }
+}
+
+
+productRequests.getProductById = async function(id, jwToken = null){
+    const options = {
+        ...(jwToken && {
+            headers: { authorization: `Bearer ${jwToken}` }
+        }) 
+    }
+
+    try {
+        const product = await request.get(`${BASE_URL}/products/${id}`, options);
         return product;
 
     } catch ({message}) {

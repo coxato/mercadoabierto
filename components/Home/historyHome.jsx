@@ -15,8 +15,12 @@ const HistoryHome = () => {
             let _products = [];
 
             for(let id of historyIds){
-                let data = await productRequest.getProductById(id);
-                _products.push(data.productData);
+                let { productData } = await productRequest.getProductById(id);
+                
+                if(productData){
+                    _products.push(productData);
+                }
+                
             }
             setProducts(_products);
 

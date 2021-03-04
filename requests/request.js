@@ -52,6 +52,19 @@ request.post = async function(url, dataToSend, options = {}){
 }
 
 
+request.put = async function(url, dataToUpdate, options = {}){
+    try {
+        const { data } = await axios.put(url, dataToUpdate, setDefaultOptions(options));
+
+        return manageResponse(data);
+
+    } catch (err) {
+        console.error(err);
+        throw new Error(err.message);
+    }
+}
+
+
 request.delete = async function(url, dataToSend = {}, options = {}){
     try {
         const { data } = await axios.delete(url, {

@@ -10,6 +10,8 @@ import {
 import ReactImageMagnify from 'react-image-magnify';
 // components
 import PhotosColumn from './photosColumn';
+// utils
+import { getScreenData } from '../../utils/screen';
 // style
 import s from './detailPhotoGallery.module.css';
 
@@ -17,6 +19,7 @@ import s from './detailPhotoGallery.module.css';
 const DetailPhotoGallery = ({ photos }) => {
 
     const [ photoIndex, setPhotoIndex ] = useState(0);
+    const { isMobile } = getScreenData();
 
     // handlers
     const handleNext = () => setPhotoIndex(photoIndex + 1);
@@ -67,6 +70,7 @@ const DetailPhotoGallery = ({ photos }) => {
                                             shouldUsePositiveSpaceLens: true,
                                             enlargedImagePortalId: 'enlargedContainer',
                                             enlargedImageContainerClassName: s.enlargedImageContainer,
+                                            hoverDelayInMs: isMobile ? 9999999 : 250
                                         }} />
                                     </div>
                                 </Slide>

@@ -1,21 +1,35 @@
 import React, { createContext, useContext, useReducer } from 'react';
 // reducer
-import productCreationReducer from './reducers/product';
-
-// this is a really verbose solution for a simple problem
-// but I just want to practice a concept that I seed in a blog
-// https://kentcdodds.com/blog/how-to-use-react-context-effectively
-
-// this file is just for create a random id and use it in multiple components,  
-// yeah, just that xD, but others files in this folder (./store) have more functionalities
+import productCreationReducer from './reducers/productCreation';
 
 const StateContext = createContext();
 const DispatchContext = createContext();
 
+const defaultState = {
+    productData: {
+        id_album: '',
+        title: '',
+        description: '',
+        category: '',
+        quantity: 0,
+        price: 0,
+        cover: '',
+        new: 1
+    },
+    photos: []
+}
 
-const ProductCreationHOC = ({ children }) => {
-    
-    const [state, dispatch] = useReducer(productCreationReducer, { id_album: '' });
+const ProductCreationHOC = ({ children, productEditData = null }) => {
+    // productEditData is not null when is editing
+    const _defaultState = productEditData || defaultState;
+
+    const [state, dispatch] = useReducer(
+        productCreationReducer,
+        {
+            ..._defaultState,
+            isEditing: !!productEditData
+        }
+    );
 
     return (
         <StateContext.Provider value={state}>
@@ -48,5 +62,6 @@ const useProductCreation = () => ({
  
 export default ProductCreationHOC;
 export {
-    useProductCreation
+    useProductCreation,
+    useProductState
 }
