@@ -8,11 +8,11 @@ class MyExtendedDocument extends Document{
                     <link rel="stylesheet" href="/css/autocomplete.css" />
                     <link rel="icon" type="image/png" href="/images/logo-v3.png" />
                     <meta name="description" content="Mercadoabierto " />
-                    <meta property="og:image" content="/images/full-logo.png" />
+                    <meta property="og:image" content="/images/logo-social-media.jpg" />
 
                     <meta property="og:title" content="Mercadoabierto" />
-                    <meta property="og:site_name" content="Mercadoabierto1"/>
-                    <meta property="og:description" content="Lol la wea xdd" />
+                    <meta property="og:site_name" content="Mercadoabierto"/>
+                    <meta property="og:description" content="The best marketplace for sell and buy tech." />
                 </Head>
                 <body className="my-super-custom-css-class">
                     <Main />
