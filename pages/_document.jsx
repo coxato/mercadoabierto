@@ -8,7 +8,7 @@ class MyExtendedDocument extends Document{
                     <link rel="stylesheet" href="/css/autocomplete.css" />
                     <link rel="icon" type="image/png" href="/images/logo-v3.png" />
                     <meta name="description" content="Mercadoabierto " />
-                    <meta property="og:image" content="/images/logo-social-media.jpg" />
+                    <meta property="og:image" content="/images/og-image.png" />
 
                     <meta property="og:title" content="Mercadoabierto" />
                     <meta property="og:site_name" content="Mercadoabierto"/>
