@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
+// components
+import LogoutBtn from '../Logout/logoutBtn';
 // store
 import { useUserInfo } from '../../store/user';
 
@@ -30,8 +32,7 @@ const PopupContent = () => {
             <div className="link">
                 <Link href={`/`}>
                     <a className="text">
-                        <Icon name="power off" color="black" />
-                        Logout
+                        <LogoutBtn />
                     </a>
                 </Link>
             </div>
