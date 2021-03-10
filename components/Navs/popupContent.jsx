@@ -30,11 +30,9 @@ const PopupContent = () => {
                 </Link>
             </div>
             <div className="link">
-                <Link href={`/`}>
-                    <a className="text">
-                        <LogoutBtn />
-                    </a>
-                </Link>
+                <a className="text">
+                    <LogoutBtn />
+                </a>
             </div>
 
             <style jsx>{`
