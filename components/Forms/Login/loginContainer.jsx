@@ -54,7 +54,7 @@ const LoginContainer = () => {
             redirectTimer = setTimeout(() => {
                 saveUserInfo(userBasicData);
                 router.push("/");
-            }, 4000);
+            }, 3000);
 
         } catch (err) {
             setLoading(false);

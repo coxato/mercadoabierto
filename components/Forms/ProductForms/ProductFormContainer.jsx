@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import { useProductCreation } from '../../../store/productCreation';
 import productRequests from '../../../requests/products';
 import { productFormValidation } from '../../../utils/productFormValidation';
 // components
@@ -8,6 +7,8 @@ import ProductForm from './ProductForm';
 import ProductPhotos from './ProductPhotosForm';
 import ProductErrorManagement from './productFormErrorManage';
 import ProductSuccessCreated from './ProductCreated';
+// context providers
+import { useProductCreation } from '../../../store/productCreation';
 // style for forms
 import s from './product-forms.module.css';
 
@@ -39,8 +40,6 @@ const ProductFormContainer = () => {
             [name]: value
         }));
     }
-
-    const getPhotos = urlsArr => setPhotosUrls(urlsArr);
 
     const handleSubmit = (ev) => {
         ev.preventDefault();
@@ -96,7 +95,7 @@ const ProductFormContainer = () => {
                             isEditing={isEditing}
                         />
                         
-                        <ProductPhotos urlsCallback={getPhotos} />
+                        <ProductPhotos urlsCallback={setPhotosUrls} />
                         
                         <Button type="submit" fluid size="huge" primary loading={loading}>
                             {`Ready, ${isEditing ? 'update':  'publish'} my product!`}

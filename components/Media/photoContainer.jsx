@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // components
 import PhotoUploadComponent from './photoUploadComponent';
+import PhotoAlreadyUploaded from './photoAlreadyUploaded';
 
 // like typescript enum
 const steps = {
@@ -9,17 +10,15 @@ const steps = {
     uploaded: 2
 }
 
-let successUploadTimer;
-
 // TODO: 
 // have an unique id per photo, so the full name should be: `${id_album}-${id_photo}-${imageFile.name}`;
 
-const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback }) => {
+const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback, uploadedImageUrl, index }) => {
 
     const defaultImageUrl = '/images/default-image.png'; 
 
     const [imageFile, setImageFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState(defaultImageUrl);
+    const [imageUrl, setImageUrl] = useState(uploadedImageUrl || defaultImageUrl);
     const [step, setStep] = useState(steps.toUpload);
 
     const handleSetImage = (image) => {
@@ -28,35 +27,37 @@ const PhotoUploadContainer = ({ saveUrlCallback, deleteUrlCallback }) => {
     }
 
     const handleSetImageUrl = (url, cb = ()=>{}) => {
-        successUploadTimer = setTimeout(() => {
-            setImageUrl(url)
-            setStep(steps.uploaded);
-            cb();
-            // parent component callback
-            saveUrlCallback(url);
-        }, 1500);
+        setImageUrl(url)
+        // setStep(steps.uploaded);
+        setStep(steps.toUpload);
+        cb();
+        // parent component callback
+        saveUrlCallback(url);
     }
 
     const deleteCallback = () => {
-        const oldUrl = uploadedImageUrl || imageUrl;
+        const oldUrl = imageUrl;
 
-        setImageUrl('/images/default-image.png');
+        setImageUrl(defaultImageUrl);
         setStep(steps.toUpload);
         
         // parent component callback
         deleteUrlCallback(oldUrl);
     }
 
-    useEffect(() => {
-        return () => {
-            clearTimeout(successUploadTimer);
-        }
-    }, []);
+
+    if(uploadedImageUrl) return (
+        <div className={ index === 0 ? 'photo-form-cover' : ''}>
+            <PhotoAlreadyUploaded 
+                deleteCallback={deleteCallback} 
+                uploadedImageUrl={uploadedImageUrl}    
+            />
+        </div>
+    );
 
     return (
         <PhotoUploadComponent
             {...{
-                imageUrl,
                 imageFile,
                 handleSetImage,
                 handleSetImageUrl,

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import mediaRequests from '../../requests/media';
 import { useProductState } from '../../store/productCreation';
 import { Icon, Loader, Message } from 'semantic-ui-react';
+// context
+import { PhotoMediaContext } from '../ContextsAndHOCs/productPhotoMediaHOC';
 
 const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl = ''}) => {
 
@@ -10,6 +12,7 @@ const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl = ''}) => {
 
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);
+    const { setIsOngoingProcess } = useContext(PhotoMediaContext);
 
     // if this is a re render, we receive the firebase image location
     // if it is not, construct the image name
@@ -32,19 +35,27 @@ const PhotoDelete = ({deleteCallback, imageFile, uploadedImageUrl = ''}) => {
             successCallback: () => {
                 setDeleting(false);
                 deleteCallback(uploadedImageUrl);
+                setIsOngoingProcess(false);
             },
-            errorCallback: setError
+            errorCallback: handleError
         })
+    }
+
+    const handleError = (err) => {
+        setError(err);
+        setDeleting(false);
+        setIsOngoingProcess(false);
     }
 
     // delete from firebase all call deleteFromServer() to delete it in mysql too.
     const handleDelete = async () => {
         setDeleting(true);
+        setIsOngoingProcess(true);
 
         mediaRequests.deleteFile({
             fileUrl: `products/${photoFullName}`,
             successCallback: deleteFromServer,
-            errorCallback: setError
+            errorCallback: handleError
         })
     }
 

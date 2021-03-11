@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Progress } from 'semantic-ui-react';
 import mediaRequests from '../../requests/media';
 // store
 import { useProductState } from '../../store/productCreation'; 
+// context
+import { PhotoMediaContext } from '../ContextsAndHOCs/productPhotoMediaHOC';
 
-const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
+const PhotoUpload = ({ imageFile, handleSetImageUrl }) => {
     
-    // context provider state
+    // store context provider state
     const { productData: { id_album } } = useProductState();
+    const { setIsOngoingProcess } = useContext(PhotoMediaContext);
     
     // local state
-    
     const [percent, setPercent] = useState(0);
     const [label, setLabel] = useState('saving');
     const [success, setSuccess] = useState(null);
@@ -21,19 +23,18 @@ const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
     const errorCallback = message => {
         setLabel('problem uploading file');
         setError(message);
+        setIsOngoingProcess(false);
     }
 
     const successServerCallback = (downloadUrl) => {
-        setLabel('saved!')
+        setLabel('saved!');
         setSuccess(true);
-        handleSetImageUrl(
-            downloadUrl, 
-            // hide overlay
-            () => setActive(false)
-        );
+        setIsOngoingProcess(false);
+
+        handleSetImageUrl(downloadUrl);
     }
 
-    // 
+    
     const upload = async () => {
         setLabel('saving');
         setSuccess(null);
@@ -56,22 +57,23 @@ const PhotoUpload = ({ imageFile, handleSetImageUrl, setActive }) => {
                 },
                 successCallback: successServerCallback,
                 errorCallback
-            })
+            });
 
         } catch ({message}) {
             errorCallback(message);
+            setIsOngoingProcess(false);
         }
     }
 
 
     useEffect(() => {
         upload();
+        setIsOngoingProcess(true);
     }, []);
 
 
     return (
         <div className="container">
-
             <Progress 
                 active 
                 progress 

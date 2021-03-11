@@ -15,6 +15,26 @@ div#__next > div
     min-height: 100vh;
 }
 
+.photo-form-cover{
+    border: 3px solid #ff8c22;
+    border-radius: 8px;
+    position: relative;
+}
+
+.photo-form-cover::before{
+    content: 'cover';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background: #ff8c22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 0 0 0 4px;
+}
+
 /* semantic ui overwrite */
 .ui.dimmer>.content{
     width: 100%;
