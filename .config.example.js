@@ -15,7 +15,9 @@ const config = {
         appId: process.env.APP_ID || ""          
     },
 
+    // your data API
     api: {
+        // this is for your own rest API or 3rd party API 
         baseUrl: 'http://localhost:5000/api'
     }
 
