@@ -44,6 +44,6 @@ Then:
 If you don't want to install anything and just want to see the project online just check it out https://mercadoabierto.vercel.app/
 
 # Contribution
-If you want to add or modify something fork the repo, and if you see a bug, write an issue.
+If you want to add or modify something fork the repo and make a pull request, and if you see a bug, write an issue.
 
-And if you want to give me a star, I appreciate it.
+And if you want to give me a star, I appreciate it :)
