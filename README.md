@@ -12,7 +12,7 @@ The purpose of this project was to practice what was learned in the [nextjs](htt
 ## Backend for this project
 this is the [backend repo](https://github.com/carlosEdua/mercadoabierto-backend)
 
-# Instalation
+# Installation
 with yarn
 
 ```yarn install```
