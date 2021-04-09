@@ -1,6 +1,6 @@
 {
   "name": "mercadoabierto-frontend",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "An mercadolibre clone",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/carlosEdua/mercadoabierto.git"
+    "url": "https://github.com/coxato/mercadoabierto.git"
   },
   "dependencies": {
     "@tarekraafat/autocomplete.js": "^8.3.0",

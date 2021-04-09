@@ -28,7 +28,7 @@ const AboutHome = () => {
                     <br/>
                     <p className={s.iywoc}>(if you want of course)</p>
                 </div>
-                <a className={s.button} href="https://github.com/carlosEdua/mercadoabierto" target="_blank" rel="noopener noreferrer">
+                <a className={s.button} href="https://github.com/coxato/mercadoabierto" target="_blank" rel="noopener noreferrer">
                     <Icon name="github" id="githubIcon-about-home" />
                     Github 
                     <Icon name="external" />

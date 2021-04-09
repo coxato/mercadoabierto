@@ -10,5 +10,5 @@ Because [mercadolibre](https://mercadolibre.com) have SSR (Server Side Rendering
 Well, it's an ecommerce and a marketplace, so you can buy and sell tech products, like smartphones, laptops, smartwatchs, etc. Just [create an account](/signup) and start using it.
 
 # Do you want to see the source code?
-Here is the github [repo](https://github.com/carlosEdua/mercadoabierto).
+Here is the github [repo](https://github.com/coxato/mercadoabierto).
 Give me a start in github! (if you like this of course).

@@ -18,13 +18,13 @@ const FooterLinksTop = () => {
 
             <div className={s.column}>
                 <div className={s.linkTitle}>Other sites</div>
-                <a className={s.link} href="https://github.com/carlosEdua/mercadoabierto" target="_blank" rel="noopener noreferrer">
+                <a className={s.link} href="https://github.com/coxato/mercadoabierto" target="_blank" rel="noopener noreferrer">
                     Mercadoabierto github
                 </a>
-                <a className={s.link} href="https://github.com/carlosEdua" target="_blank" rel="noopener noreferrer">
+                <a className={s.link} href="https://github.com/coxato" target="_blank" rel="noopener noreferrer">
                     Carlos Martínez github
                 </a>
-                <a className={s.link} href="https://carlosedua.github.io/portfolio/" target="_blank" rel="noopener noreferrer">
+                <a className={s.link} href="https://coxato.dev" target="_blank" rel="noopener noreferrer">
                     Carlos Martínez website
                 </a>
             </div>
