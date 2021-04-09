@@ -12,7 +12,7 @@ const AboutPage = () => {
             <CustomHead title="About mercadoabierto" />
         
             <AppLayout>
-                <div style={{paddingBottom: '40px'}}>
+                <div style={{paddingBottom: '40px', backgroundColor: 'white'}}>
                     <MarkdownBlog content={content} />
                 </div>
             </AppLayout>
