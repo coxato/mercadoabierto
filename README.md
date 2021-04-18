@@ -47,3 +47,10 @@ If you don't want to install anything and just want to see the project online ju
 If you want to add or modify something fork the repo and make a pull request, and if you see a bug, write an issue.
 
 And if you want to give me a star, I appreciate it :)
+
+## TODO list
+
+- [ ] delete items in cart
+- [ ] use cookies instead localStorage
+- [ ] improve photo upload components
+- [ ] edit avatar in user's profile
