@@ -27,6 +27,7 @@ const CategoriesNavbar = () => {
                 placeholder='category'
                 fluid
                 selection
+                selectOnBlur={false}
                 options={categoriesOptions}
                 value={value}
                 onChange={(ev, data) => handleChange(data.value)}
