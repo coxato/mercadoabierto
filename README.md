@@ -50,7 +50,7 @@ And if you want to give me a star, I appreciate it :)
 
 ## TODO list
 
-- [ ] delete items in cart
+- [x] delete items in cart
 - [ ] use cookies instead localStorage
 - [ ] improve photo upload components
 - [ ] edit avatar in user's profile

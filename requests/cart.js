@@ -44,5 +44,23 @@ cartRequests.getUserCartItems = async function(userId, jwToken = '') {
     }
 }
 
+cartRequests.deleteItemFromCart = async function(id_user, id_product) {
+    try {
+        const deleted = await request.delete(
+            `${BASE_URL}/cart/delete-item`, {
+                id_user,
+                id_product
+            },
+            { token: true }
+        );
+
+        return !!deleted;
+
+    } catch ({message}) {
+        console.error("error deleting item from cart", message);
+        return false;
+    }
+}
+
 
 export default cartRequests;

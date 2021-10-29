@@ -13,16 +13,15 @@ function InitStoreHOC({children}){
     const { getCartItemsForDB } = useCart();
 
     useEffect(() => {
-        const isLogged = checkIsLogged();
-        
-        if(isLogged){
-            getCartItemsForDB(id_user)
-                .then( () => setLoading(false));
-        }
-        else{
+        async function loadData() {
+            const isLogged = checkIsLogged();
+            
+            if(isLogged) await getCartItemsForDB(id_user);
+            
             setLoading(false);
         }
-
+        
+        loadData();
     }, []);
 
     return(

@@ -62,8 +62,14 @@ export default function cartReducer(state, action) {
 
         case QUIT_ITEM: {
             const { itemId } = action.payload;
+            const qty = state[itemId].quantity;
+
             delete state[itemId];
-            return state;
+            
+            return {
+                ...state,
+                totalItemsQty: state.totalItemsQty - qty
+            };
         }
 
 

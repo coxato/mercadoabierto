@@ -1,14 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useCartInfo } from '../../store/cart';
 import { Button, Image, List, Header, Segment } from 'semantic-ui-react'
+// store
+import { useCartInfo, useCart } from '../../store/cart';
+import { useUserInfo } from '../../store/user';
+// request
+import cartRequests from '../../requests/cart';
 // style
 import s from './itemList.module.css';
 
 
 const CartItemList = ({ items, handleShowPay }) => {
-
     const cartState = useCartInfo();
+    const { removeItem } = useCart();
+    const userData = useUserInfo();
+    
+    const [cartItems, setCartItems] = useState(items);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    // put items from store in an array and set state
+    const parseItemsFromStore = () => {
+        const itemsCopy = {...cartState}
+        delete itemsCopy.totalItemsQty;
+
+        const itemsParsed = Object.values(itemsCopy);
+
+        console.log("the itemsParsed", itemsParsed);
+
+        setCartItems(itemsParsed);
+    } 
+
+    // delete item from cart
+    const handleDeleteItem = async (id_product) => {
+        try {
+            setIsDeleting(true);
+            // remove from DB
+            const deleted = await cartRequests.deleteItemFromCart(userData.id_user, id_product);
+
+            // remove from context store
+            if(deleted) removeItem(id_product);
+
+            parseItemsFromStore();
+
+            setIsDeleting(false);
+        } catch (err) {
+            console.error('error deleting item from list', err.message);
+            setIsDeleting(false);
+        }
+    }
 
     // if cart is empty
     if(items?.length === 0 || cartState.totalItemsQty === 0){
@@ -16,7 +55,7 @@ const CartItemList = ({ items, handleShowPay }) => {
             <div className={s.container}>
                 <Segment textAlign="center" padded>
                     <Header as="h1" content="You don't have items in cart yet" />
-                    <Link href="/">
+                    <Link  href="/">
                         <a>
                             <Button color="blue" size="big">Go to buy something</Button>
                         </a>
@@ -34,14 +73,20 @@ const CartItemList = ({ items, handleShowPay }) => {
 
                 <List divided verticalAlign='middle'>
                     {
-                        items.map( (item, idx) => {
+                        cartItems.map( (item, idx) => {
                             const { cover, title, price, id_product } = item;
-                            const { quantity } = cartState[id_product];
+                            const quantity = cartState[id_product]?.quantity;
 
                             return(
                                 <List.Item key={idx}>
                                     <List.Content floated='right' className={s.btn}>
-                                        <Button color="red">Delete</Button>
+                                        <Button 
+                                            onClick={() => handleDeleteItem(id_product)}
+                                            color="red"
+                                            loading={isDeleting}
+                                        >
+                                                Delete
+                                        </Button>
                                     </List.Content>
                                     
                                     <Image rounded size="small" src={cover} />

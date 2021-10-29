@@ -41,14 +41,14 @@ const AddToCartButtonContainer = ({userId, productId, avaliableQty, price}) => {
     const handleAdd = async () => {
         // is logged
         if(id_user){
-            if(!canBuy) return;
-
             setLoading(true);
     
             const productAdded = await cartRequests.addToCart({ productId, qty, userId });
             
             setLoading(false);
             
+            if(!canBuy || !productAdded) return;
+
             // save in reducer
             addCartItem(productId, productAdded, qty);
         }
