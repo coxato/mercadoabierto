@@ -12,7 +12,7 @@ class MyExtendedDocument extends Document{
                     <meta property="og:title" content="Mercadoabierto" />
                     <meta property="og:site_name" content="Mercadoabierto"/>
                     <meta property="og:description" content="The best marketplace for sell and buy tech." />
-                    <meta property="og:image" content="https://mercadoabierto.vercel.app/images/og.png" />
+                    <meta property="og:image" content="https://mercadoabierto.vercel.app/images/og.jpg" />
 
                     {/* Twitter Meta Tags */}
                     <meta name="twitter:card" content="summary_large_image" />
